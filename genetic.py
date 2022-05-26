@@ -3,6 +3,11 @@ import random
 from chromosome import Human
 #from selector import uni_parent
 from base_func import calc_dist,inversion #Basic known functions
+"""
+
+UWAGI DODAC 2 krzyzowania
+PRZYNINAC POPULACJE W INNY SPOSÓB 
+"""
 
 """
 Globalne zmienne bardzo często używane w programie
@@ -39,7 +44,7 @@ def generate_start_population(graph):
      
     global population_size, total_cost, list_of_humans, total_adapt_points
     
-    populations = []
+    populations = [] ### Sprawdzic czy sie opłaca test plus optymalizacja
 
     for _ in range(population_size):
         
@@ -54,12 +59,12 @@ def generate_start_population(graph):
     """
     BARDZO CIEKAWY MODUŁ
     """
-    list_of_humans.sort(key=lambda x: x.dis)    
+    list_of_humans.sort(key=lambda x: x.dis)  # testownik sortowanie dla elit   
     
     i = 0 
     for x in list_of_humans:
-        x.set_human_id(i)
-        x.set_adaption_point( x.dis/total_cost )
+        x.set_human_id(i) ### elity
+        x.set_adaption_point( x.dis/total_cost ) # Premiowanie  słabyszch?
         total_adapt_points += x.adap_points
         i = i  + 1 
         
@@ -107,7 +112,7 @@ lekko zredagowany do bierzących potzreb
 # ruletka
 def roul_parent():
     
-    global population_size, total_cost, list_of_humans, total_adapt_points, selected_parents
+    global population_size, total_cost, list_of_humans, total_adapt_points, selected_parents, selected_second_parents
     
     roulette_compartment = 0.0
     for human in list_of_humans:
@@ -124,7 +129,7 @@ def roul_parent():
         list_of_humans[first_parent].set_coparent(second_parent)
         list_of_humans[second_parent].set_coparent(first_parent)
         selected_parents.add(first_parent)
-        
+        #selected_second_parents.add(second_parent)
 
 # funkcja pomocnicza, wyciąga wylosowanego rodzica
 def get_parent(random_number):
@@ -157,6 +162,7 @@ def crossover(graph, i, j):
     new_generation = []
     # generujemy parę dzieci dla każdej pary rodziców
     for parent in selected_parents:
+        
         while list_of_humans[parent].is_empty_partners_array():
             
             first_child,second_child = get_child(graph, parent, i, j)
@@ -222,12 +228,13 @@ Mutacja lecz wykorzystuej kalsy
 """
 def mutation(graph, generation):
     
-    global total_cost, list_of_humans , selected_second_parents, selected_parents
+    global total_cost, list_of_humans
     
     i = random.randint(0, graph.number_of_nodes() - 1)
     j = random.randint(0, graph.number_of_nodes() - 1)
+    #punkty losowane dla kazdego !!!
     
-    total_cost = 0
+    total_cost = 0 ## UWAGA MOZE NIE DZIAŁAĆ INNCYH SELECTEROÓW 
     for i in range(len(generation)):
         
         rand = random.random()
