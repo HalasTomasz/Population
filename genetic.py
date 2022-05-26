@@ -69,7 +69,7 @@ def generate_start_population(graph):
 """
 Możliwosc rozbudowy selekcji
 """
-def selection(base = 'uni'):
+def selection(base = 'roul'):
     
 
     if base == 'roul':
@@ -88,7 +88,7 @@ def uni_parent():
     
     global population_size, list_of_humans, selected_parents, selected_second_parents
     i = 0 
-    while i != population_size: # Moze by orgraniczyć liczbe rozmnażania?
+    while i != 30: # Moze by orgraniczyć liczbe rozmnażania?
         first_parent =  random.randint(0, population_size-1)
         second_parent = random.randint(0, population_size-1)
         if first_parent == second_parent: #sam ze soba sie nie  moze XDD
@@ -117,7 +117,7 @@ def roul_parent():
      
         roulette_compartment += roulette_prob # CZY TO ŻE TABLICA LUDZI JEST POSORTOWANA COS ZMIENIA?
     
-    for i in range(population_size):
+    for i in range(30):
         
         first_parent = get_parent(random.random())
         second_parent = get_parent(random.random())
@@ -290,25 +290,22 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations):
     #Pick teh best human Avaible
 
     for i in range(number_of_iterations):
-        
+        print("done ", i)
         selection()
 
         crossover_i = math.floor(graph.number_of_nodes() / 3)
         crossover_j = math.floor(graph.number_of_nodes() * 2 / 3)
         
-        #list_of_humans = crossover(graph, crossover_i, crossover_j) ## POSSIBLE OUT COME
+        list_of_humans = crossover(graph, crossover_i, crossover_j) ## POSSIBLE OUT COME
         
         
-        generator = crossover(graph, crossover_i, crossover_j)
-        list_of_humans.extend(generator)
-        population_size = len(list_of_humans)
-        final_check()
+       # generator = crossover(graph, crossover_i, crossover_j)
+       # list_of_humans.extend(generator)
+        #population_size = len(list_of_humans)
+       # final_check()
         
         list_of_humans.sort(key=lambda x: x.dis)   
-         
-        if i % 4 == 0 :
-            kill()
-            
+
         population_size = len(list_of_humans)    
         i = 0 
         for x in list_of_humans:
@@ -320,6 +317,8 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations):
             
 
         best_solution, best_solution_distance = list_of_humans[-1].perm, list_of_humans[-1].dis
-
-
+        
+        #if i % 4 == 0 :
+           # kill()
+    
     return best_solution, best_solution_distance
