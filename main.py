@@ -11,7 +11,7 @@ def read_graph_input(file):
     new_graph = new_graph.to_directed()
 
     opt = tsplib95.load('bays29.opt.tour')
-    print("Optimal: ",problem.trace_tours(opt.tours))
+    print("Optimal: ", problem.trace_tours(opt.tours))
     return new_graph
 
 
@@ -21,7 +21,9 @@ if __name__ == '__main__':
     population_size = int(re.findall(r'\d+', filename)[0])
     number_of_iterations = 600
     mutation_prob = 0.05
+    crossover_type = "mapped_crossover"
 
-    solution, solution_distance = genetic.genetic(graph, population_size, mutation_prob, number_of_iterations)
+    solution, solution_distance = genetic.genetic(graph, population_size, mutation_prob, number_of_iterations,
+                                                  crossover_type)
     print(solution)
     print(solution_distance)

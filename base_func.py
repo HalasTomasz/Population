@@ -4,9 +4,15 @@ def calc_dist(graph, permutation):
         dis = dis + graph[permutation[i]][permutation[(i + 1) % len(permutation)]]['weight']
     return dis
 
+
 def inversion(permutation, i, j):
     while i < j:
         permutation[i], permutation[j] = permutation[j], permutation[i]
         i += 1
         j -= 1
+    return permutation
+
+
+def swap(permutation, i, j):
+    permutation[i], permutation[j] = permutation[j], permutation[i]
     return permutation

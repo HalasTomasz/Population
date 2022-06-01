@@ -27,7 +27,7 @@ total_adapt_points = 0
 selected_parents = set()
 selected_second_parents = set()
 mutation_prob = 0
-best_solution = [] 
+best_solution = []
 best_solution_distance = np.inf
 """
 Kom Szymon
@@ -61,49 +61,52 @@ def generate_start_population(graph):
     """
     BARDZO CIEKAWY MODUŁ
     """
-  ##  i = 0
+    ##  i = 0
     for x in list_of_humans:
-     #   x.set_human_id(i)  
-        x.set_adaption_point(x.dis / total_cost)
+        #   x.set_human_id(i)
+        x.set_adaption_point(total_cost / x.dis)
         total_adapt_points += x.adap_points
-      #  i = i + 1
+    #  i = i + 1
 
     # selekcja rodziców, niektórzy się powtarzają, niektórzy mogą się nie powtórzyć
+
 
 # ruletka
 """
 Możliwosc rozbudowy selekcji
 """
 
+
 def selection(base='roul'):
-    
     if base == 'roul':
-         roul_parent()
-         
+        roul_parent()
+
     elif base == "random":
-         uni_parent()
-         
+        uni_parent()
+
     else:
-         turnament()
+        tournament()
 
 
 """
 Check if correct
 """
-def turnament():
-    
+
+
+def tournament():
     global population_size, list_of_humans, selected_parents, selected_second_parents
     i = 0
-    while i != 30: 
-     
+    while i != 30:
         number_list = random.sample(range(0, population_size - 1), 5)
-        number_list = sorted(number_list,key=lambda x: list_of_humans[x].dis) # sort by dis
-        
-        list_of_humans[number_list[0]].set_coparent(number_list[1]) ## Adiing only the best!
+        number_list = sorted(number_list, key=lambda x: list_of_humans[x].dis)  # sort by dis
+
+        list_of_humans[number_list[0]].set_coparent(number_list[1])  ## Adiing only the best!
         list_of_humans[number_list[1]].set_coparent(number_list[0])
         selected_parents.add(number_list[0])
         i += 1
-    #print("Parents  ", selected_parents)
+    # print("Parents  ", selected_parents)
+
+
 """
 To samo wybierz z roz jendostajnego od 0 do Size -1
 Potem parenty
@@ -136,12 +139,11 @@ lekko zredagowany do bierzących potzreb
 # selekcja rodziców, niektórzy się powtarzają, niektórzy mogą się nie powtórzyć
 # ruletka
 def roul_parent():
-    
     global population_size, total_cost, list_of_humans, total_adapt_points, selected_parents, selected_second_parents
 
     roulette_compartment = 0.0
     for human in list_of_humans:
-        roulette_prob = (total_cost / (human.dis * total_adapt_points))
+        roulette_prob = (total_cost / human.dis) / total_adapt_points
         human.set_roulette(roulette_prob, roulette_compartment, roulette_compartment + roulette_prob)
 
         roulette_compartment += roulette_prob  # CZY TO ŻE TABLICA LUDZI JEST POSORTOWANA COS ZMIENIA?
@@ -179,7 +181,7 @@ na koneic appenduje nowa generacje
 """
 
 
-def crossover(graph, i, j):
+def crossover(graph, get_child_function, i, j):
     global selected_parents, list_of_humans
 
     new_generation = []
@@ -187,7 +189,7 @@ def crossover(graph, i, j):
     for parent in selected_parents:
 
         while list_of_humans[parent].is_empty_partners_array():
-            first_child, second_child = get_child(graph, parent, i, j)
+            first_child, second_child = get_child_function(graph, parent, i, j)
 
             new_generation.append(Human(first_child, calc_dist(graph, first_child), 0))
             new_generation.append(Human(second_child, calc_dist(graph, second_child), 0))
@@ -224,7 +226,7 @@ def get_child(graph, parent, i, j):
 
     # dodajemy lewy i prawy brzeg drugiego rodzica w kolejności występowania liczb, których nie ma w środku dziecka
     child_index = 0
-    for number in list_of_humans[first_parent].perm:
+    for number in list_of_humans[sec_parent].perm:
         if number not in used_numbers:
             if child_index == i:
                 child_index = j
@@ -234,7 +236,7 @@ def get_child(graph, parent, i, j):
                 used_numbers.append(number)
 
     child_index = 0
-    for number in list_of_humans[sec_parent].perm:
+    for number in list_of_humans[first_parent].perm:
         if number not in used_numbers2:
             if child_index == i:
                 child_index = j
@@ -243,21 +245,6 @@ def get_child(graph, parent, i, j):
                 child_index += 1
                 used_numbers2.append(number)
     return child, child2
-
-
-def partially_mapped_crossover(graph, i, j):
-    global selected_parents, list_of_humans
-    new_generation = []
- 
-    for parent in selected_parents:
-
-        while list_of_humans[parent].is_empty_partners_array():
-            first_child, second_child = get_child_partially_mapped(graph, parent, i, j)
-
-            new_generation.append(Human(first_child, calc_dist(graph, first_child), 0))
-            new_generation.append(Human(second_child, calc_dist(graph, second_child), 0))
-
-    return mutation(graph, new_generation)
 
 
 def get_child_partially_mapped(graph, parent, i, j):
@@ -280,48 +267,38 @@ def get_child_partially_mapped(graph, parent, i, j):
         # print(first_parent,"   ",sec_parent,"   ", len(child), "   ", center_parent_gene, "  ",i,"  ",j )
         first_gene = list_of_humans[first_parent].perm[center_parent_gene]
         second_gene = list_of_humans[sec_parent].perm[center_parent_gene]
-        child[center_parent_gene] = first_gene
-        child2[center_parent_gene] = second_gene
+        child[center_parent_gene] = second_gene
+        child2[center_parent_gene] = first_gene
 
-        mapping[first_gene] = second_gene
-        mapping2[second_gene] = first_gene
+        mapping[second_gene] = first_gene
+        mapping2[first_gene] = second_gene
 
-        used_numbers.append(first_gene)
-        used_numbers2.append(second_gene)
+        used_numbers.append(second_gene)
+        used_numbers2.append(first_gene)
 
     child_index = 0
     for number in list_of_humans[first_parent].perm:
-        if number not in used_numbers:
-            if child_index == i:
-                child_index = j
-            if child_index < graph.number_of_nodes():
+        if child_index < i or child_index >= j:
+            if number in used_numbers:
+                new_number = mapping[number]
+                while new_number in used_numbers:
+                    new_number = mapping[new_number]
+                child[child_index] = new_number
+            else:
                 child[child_index] = number
-                child_index += 1
-                used_numbers.append(number)
-        else:
-            new_number = mapping[number]
-            while new_number in used_numbers:
-                new_number = mapping[new_number]
-            child[child_index] = number
-            child_index += 1
-            used_numbers.append(number)
+        child_index += 1
 
     child_index = 0
     for number in list_of_humans[sec_parent].perm:
-        if number not in used_numbers2:
-            if child_index == i:
-                child_index = j
-            if child_index < graph.number_of_nodes():
+        if child_index < i or child_index >= j:
+            if number in used_numbers2:
+                new_number = mapping2[number]
+                while new_number in used_numbers2:
+                    new_number = mapping2[new_number]
+                child2[child_index] = new_number
+            else:
                 child2[child_index] = number
-                child_index += 1
-                used_numbers2.append(number)
-        else:
-            new_number = mapping2[number]
-            while new_number in used_numbers2:
-                new_number = mapping2[new_number]
-            child2[child_index] = number
-            child_index += 1
-            used_numbers2.append(number)
+        child_index += 1
 
     return child, child2
 
@@ -332,42 +309,41 @@ Mutacja lecz wykorzystuej kalsy
 """
 
 
-def mutation(graph, generation,method="roul"):
-    
-    global total_cost,selected_parents
+def mutation(graph, generation, method="roul"):
+    global total_cost, selected_parents
     i = random.randint(0, graph.number_of_nodes() - 1)
     j = random.randint(0, graph.number_of_nodes() - 1)
- 
-    if method == "roul" or method == "tour": # NIE ZERUJ GDY POPULACJA SIE PWOIEKSZA A A NIE ZAMIENIA
+
+    if method == "roul" or method == "tour":  # NIE ZERUJ GDY POPULACJA SIE PWOIEKSZA A A NIE ZAMIENIA
         total_cost = 0
-    for i in range(len(generation)):
+    for index in range(len(generation)):
 
         rand = random.random()
         if rand < mutation_prob:
-            generation[i].perm = inversion(generation[i].perm, i, j)
-            generation[i].dis = calc_dist(graph, generation[i].perm)
-            total_cost += generation[i].dis
+            generation[index].perm = inversion(generation[index].perm, i, j)
+            generation[index].dis = calc_dist(graph, generation[index].perm)
+            total_cost += generation[index].dis
         else:
-            total_cost += generation[i].dis
+            total_cost += generation[index].dis
     selected_parents = set()
-    print("TOTAL  ", total_cost) 
+    print("TOTAL  ", total_cost)
     return generation
 
 
 def final_check():
-    
-    global list_of_humans, total_adapt_points,total_cost, best_solution_distance ,best_solution
-    
-    total_adapt_points = 0 
+    global list_of_humans, total_adapt_points, total_cost, best_solution_distance, best_solution
+
+    total_adapt_points = 0
     for i in range(len(list_of_humans)):
-        
-        if  best_solution_distance > list_of_humans[i].dis:
+
+        if best_solution_distance > list_of_humans[i].dis:
             print("HERE")
             best_solution_distance = list_of_humans[i].dis
             best_solution = list_of_humans[i].perm
-            
-        list_of_humans[i].set_adaption_point(list_of_humans[i].dis / total_cost)
+
+        list_of_humans[i].set_adaption_point(total_cost / list_of_humans[i].dis)
         total_adapt_points += list_of_humans[i].adap_points
+
 
 """
 KONIEC SEKCJI CROSS OVER
@@ -375,7 +351,6 @@ KONIEC SEKCJI CROSS OVER
 
 
 def kill():
-    
     global total_cost, total_adapt_points, list_of_humans
 
     for human in list_of_humans:
@@ -384,45 +359,46 @@ def kill():
             total_cost -= human.dis
             list_of_humans.remove(human)
 
+
 """
 KONIEC SEKCJI Zabij itp  
 """
 
 
 # główna funkcja
-def genetic(graph, population_number, mutation_chance, number_of_iterations):
-    global list_of_humans, population_size, mutation_prob, total_adapt_points,best_solution_distance ,best_solution
+def genetic(graph, population_number, mutation_chance, number_of_iterations, crossover_type):
+    global list_of_humans, population_size, mutation_prob, total_adapt_points, best_solution_distance, best_solution
 
     population_size = population_number
     mutation_prob = mutation_chance
 
     generate_start_population(graph)  # Now we get list of humans
 
-
     for i in range(number_of_iterations):
+        selection(base="roul")  # CHANGE THE BASE!
 
-        selection(base="a") # CHANGE THE BASE!
-        
         crossover_i = math.floor(graph.number_of_nodes() / 3)
         crossover_j = math.floor(graph.number_of_nodes() * 2 / 3)
 
-        list_of_humans = crossover(graph, crossover_i, crossover_j)  ## POSSIBLE OUT COME
+        if crossover_type == "order_crossover":
+            list_of_humans = crossover(graph, get_child, crossover_i, crossover_j)  # POSSIBLE OUTCOME
+        elif crossover_type == "mapped_crossover":
+            list_of_humans = crossover(graph, get_child_partially_mapped, crossover_i, crossover_j)  # POSSIBLE OUTCOME
 
-        #generator = crossover(graph, crossover_i, crossover_j)
-        #list_of_humans.extend(generator)
-        #kill()
-        
+        # generator = crossover(graph, crossover_i, crossover_j)
+        # list_of_humans.extend(generator)
+        # kill()
+
         final_check()
         population_size = len(list_of_humans)
-        
-       # i = 0
-       # for x in list_of_humans:
-           # x.set_human_id(i)
-          #  x.set_adaption_point(x.dis / total_cost)
-           # total_adapt_points += x.adap_points
-          #  i = i + 1
 
-        #best_solution, best_solution_distance = list_of_humans[-1].perm, list_of_humans[-1].dis
+    # i = 0
+    # for x in list_of_humans:
+    # x.set_human_id(i)
+    #  x.set_adaption_point(x.dis / total_cost)
+    # total_adapt_points += x.adap_points
+    #  i = i + 1
 
+    # best_solution, best_solution_distance = list_of_humans[-1].perm, list_of_humans[-1].dis
 
     return best_solution, best_solution_distance
