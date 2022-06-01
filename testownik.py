@@ -12,4 +12,7 @@ Niech testy zapisują wyniki do pliku od razu po skończeniu danego algorytmu, a
 tylko uzależnić je od rozmiaru grafu (np dla grafu o rozmiarze n niech liczba mutacji wyjdzie coś w stylu 1/n, a liczba iteracji załóżmy n^2 / 2)
 i dla tych argumentów parę razy puścić
 Możemy tutaj ograniczyć się z metodami np używając tych które dawały lepsze wyniki w teście 1) żeby nie trwało za długo
+
+Możemy w kodzie jeszcze zmienić taką zależność, żeby warunkiem końca nie była liczba iteracji, lecz czas (jeśli okaże
+się, że algorytmy za długo będą chodzić, to może dużo przyspieszyć, a wyniki nie powinny aż tak odstawać
 """
