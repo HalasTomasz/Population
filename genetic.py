@@ -1,5 +1,6 @@
 import math
 import random
+import numpy as np
 from chromosome import Human
 # from selector import uni_parent
 from base_func import calc_dist, inversion  # Basic known functions
@@ -26,7 +27,8 @@ total_adapt_points = 0
 selected_parents = set()
 selected_second_parents = set()
 mutation_prob = 0
-
+best_solution = [] 
+best_solution_distance = np.inf
 """
 Kom Szymon
 """
@@ -59,31 +61,49 @@ def generate_start_population(graph):
     """
     BARDZO CIEKAWY MODUŁ
     """
-    list_of_humans.sort(key=lambda x: x.dis)  # testownik sortowanie dla elit   
-
-    i = 0
+  ##  i = 0
     for x in list_of_humans:
-        x.set_human_id(i)  ### elity
-        x.set_adaption_point(x.dis / total_cost)  # Premiowanie  słabyszch?
+     #   x.set_human_id(i)  
+        x.set_adaption_point(x.dis / total_cost)
         total_adapt_points += x.adap_points
-        i = i + 1
+      #  i = i + 1
 
     # selekcja rodziców, niektórzy się powtarzają, niektórzy mogą się nie powtórzyć
-
 
 # ruletka
 """
 Możliwosc rozbudowy selekcji
 """
 
-
 def selection(base='roul'):
+    
     if base == 'roul':
-        return roul_parent()
+         roul_parent()
+         
+    elif base == "random":
+         uni_parent()
+         
     else:
-        return uni_parent()
+         turnament()
 
 
+"""
+Check if correct
+"""
+def turnament():
+    
+    global population_size, list_of_humans, selected_parents, selected_second_parents
+    i = 0
+    while i != 30: 
+     
+        number_list = random.sample(range(0, population_size - 1), 5)
+        number_list = sorted(number_list,key=lambda x: list_of_humans[x].dis) # sort by dis
+        
+        list_of_humans[number_list[0]].set_coparent(number_list[1]) ## Adiing only the best!
+        list_of_humans[number_list[1]].set_coparent(number_list[0])
+        selected_parents.add(number_list[0])
+        i += 1
+    #print("Parents  ", selected_parents)
 """
 To samo wybierz z roz jendostajnego od 0 do Size -1
 Potem parenty
@@ -104,7 +124,6 @@ def uni_parent():
         list_of_humans[first_parent].set_coparent(second_parent)
         list_of_humans[second_parent].set_coparent(first_parent)
         selected_parents.add(first_parent)
-        selected_second_parents.add(second_parent)
         i += 1
 
 
@@ -117,6 +136,7 @@ lekko zredagowany do bierzących potzreb
 # selekcja rodziców, niektórzy się powtarzają, niektórzy mogą się nie powtórzyć
 # ruletka
 def roul_parent():
+    
     global population_size, total_cost, list_of_humans, total_adapt_points, selected_parents, selected_second_parents
 
     roulette_compartment = 0.0
@@ -132,7 +152,6 @@ def roul_parent():
         list_of_humans[first_parent].set_coparent(second_parent)
         list_of_humans[second_parent].set_coparent(first_parent)
         selected_parents.add(first_parent)
-        # selected_second_parents.add(second_parent)
 
 
 # funkcja pomocnicza, wyciąga wylosowanego rodzica
@@ -229,7 +248,7 @@ def get_child(graph, parent, i, j):
 def partially_mapped_crossover(graph, i, j):
     global selected_parents, list_of_humans
     new_generation = []
-    # generujemy parę dzieci dla każdej pary rodziców
+ 
     for parent in selected_parents:
 
         while list_of_humans[parent].is_empty_partners_array():
@@ -313,14 +332,14 @@ Mutacja lecz wykorzystuej kalsy
 """
 
 
-def mutation(graph, generation):
-    global total_cost, list_of_humans
-
+def mutation(graph, generation,method="roul"):
+    
+    global total_cost,selected_parents
     i = random.randint(0, graph.number_of_nodes() - 1)
     j = random.randint(0, graph.number_of_nodes() - 1)
-    # punkty losowane dla kazdego !!!
-
-    total_cost = 0  ## UWAGA MOZE NIE DZIAŁAĆ INNCYH SELECTEROÓW
+ 
+    if method == "roul" or method == "tour": # NIE ZERUJ GDY POPULACJA SIE PWOIEKSZA A A NIE ZAMIENIA
+        total_cost = 0
     for i in range(len(generation)):
 
         rand = random.random()
@@ -330,23 +349,25 @@ def mutation(graph, generation):
             total_cost += generation[i].dis
         else:
             total_cost += generation[i].dis
-
+    selected_parents = set()
+    print("TOTAL  ", total_cost) 
     return generation
 
 
 def final_check():
-    global list_of_humans, selected_parents, selected_second_parents
-
+    
+    global list_of_humans, total_adapt_points,total_cost, best_solution_distance ,best_solution
+    
+    total_adapt_points = 0 
     for i in range(len(list_of_humans)):
-
+        
+        if  best_solution_distance > list_of_humans[i].dis:
+            print("HERE")
+            best_solution_distance = list_of_humans[i].dis
+            best_solution = list_of_humans[i].perm
+            
         list_of_humans[i].set_adaption_point(list_of_humans[i].dis / total_cost)
-
-        if i in selected_parents or i in selected_second_parents:
-            list_of_humans[i].add_age()
-
-    selected_parents = set()
-    selected_second_parents = set()
-
+        total_adapt_points += list_of_humans[i].adap_points
 
 """
 KONIEC SEKCJI CROSS OVER
@@ -354,17 +375,14 @@ KONIEC SEKCJI CROSS OVER
 
 
 def kill():
-    global total_cost, total_adapt_points, list_of_humans, selected_second_parents, selected_parents
+    
+    global total_cost, total_adapt_points, list_of_humans
 
     for human in list_of_humans:
-
-        if human.age == 0:
+        human.add_age()
+        if human.age == 3:
             total_cost -= human.dis
-            total_adapt_points -= human.adap_points
             list_of_humans.remove(human)
-        else:
-            human.age = 0
-
 
 """
 KONIEC SEKCJI Zabij itp  
@@ -373,44 +391,38 @@ KONIEC SEKCJI Zabij itp
 
 # główna funkcja
 def genetic(graph, population_number, mutation_chance, number_of_iterations):
-    global list_of_humans, population_size, mutation_prob, total_adapt_points
+    global list_of_humans, population_size, mutation_prob, total_adapt_points,best_solution_distance ,best_solution
 
-    best_solution = None
-    best_solution_distance = 0
     population_size = population_number
     mutation_prob = mutation_chance
 
     generate_start_population(graph)  # Now we get list of humans
 
-    # Pick teh best human Avaible
 
     for i in range(number_of_iterations):
-        print("done ", i)
-        selection()
 
+        selection(base="a") # CHANGE THE BASE!
+        
         crossover_i = math.floor(graph.number_of_nodes() / 3)
         crossover_j = math.floor(graph.number_of_nodes() * 2 / 3)
 
         list_of_humans = crossover(graph, crossover_i, crossover_j)  ## POSSIBLE OUT COME
 
-        # generator = crossover(graph, crossover_i, crossover_j)
-        # list_of_humans.extend(generator)
-        # population_size = len(list_of_humans)
-        # final_check()
-
-        list_of_humans.sort(key=lambda x: x.dis)
-
+        #generator = crossover(graph, crossover_i, crossover_j)
+        #list_of_humans.extend(generator)
+        #kill()
+        
+        final_check()
         population_size = len(list_of_humans)
-        i = 0
-        for x in list_of_humans:
-            x.set_human_id(i)
-            x.set_adaption_point(x.dis / total_cost)
-            total_adapt_points += x.adap_points
-            i = i + 1
+        
+       # i = 0
+       # for x in list_of_humans:
+           # x.set_human_id(i)
+          #  x.set_adaption_point(x.dis / total_cost)
+           # total_adapt_points += x.adap_points
+          #  i = i + 1
 
-        best_solution, best_solution_distance = list_of_humans[-1].perm, list_of_humans[-1].dis
+        #best_solution, best_solution_distance = list_of_humans[-1].perm, list_of_humans[-1].dis
 
-        # if i % 4 == 0 :
-        # kill()
 
     return best_solution, best_solution_distance
