@@ -181,7 +181,7 @@ na koneic appenduje nowa generacje
 """
 
 
-def crossover(graph, get_child_function, i, j):
+def crossover(graph, get_child_function, i, j,method_selected):
     global selected_parents, list_of_humans
 
     new_generation = []
@@ -194,7 +194,7 @@ def crossover(graph, get_child_function, i, j):
             new_generation.append(Human(first_child, calc_dist(graph, first_child), 0))
             new_generation.append(Human(second_child, calc_dist(graph, second_child), 0))
 
-    return mutation(graph, new_generation)
+    return mutation(graph, new_generation, method_selected)
 
 
 """
@@ -366,7 +366,7 @@ KONIEC SEKCJI Zabij itp
 
 
 # główna funkcja
-def genetic(graph, population_number, mutation_chance, number_of_iterations, crossover_type):
+def genetic(graph, population_number, mutation_chance, number_of_iterations, selection_type, crossover_type):
     global list_of_humans, population_size, mutation_prob, total_adapt_points, best_solution_distance, best_solution
 
     population_size = population_number
@@ -375,15 +375,16 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, cro
     generate_start_population(graph)  # Now we get list of humans
 
     for i in range(number_of_iterations):
-        selection(base="roul")  # CHANGE THE BASE!
+        
+        selection(base=selection_type)  # CHANGE THE BASE!
 
         crossover_i = math.floor(graph.number_of_nodes() / 3)
         crossover_j = math.floor(graph.number_of_nodes() * 2 / 3)
 
         if crossover_type == "order_crossover":
-            list_of_humans = crossover(graph, get_child, crossover_i, crossover_j)  # POSSIBLE OUTCOME
+            list_of_humans = crossover(graph, get_child, crossover_i, crossover_j,selection_type)  # POSSIBLE OUTCOME
         elif crossover_type == "mapped_crossover":
-            list_of_humans = crossover(graph, get_child_partially_mapped, crossover_i, crossover_j)  # POSSIBLE OUTCOME
+            list_of_humans = crossover(graph, get_child_partially_mapped, crossover_i, crossover_j,selection_type)  # POSSIBLE OUTCOME
 
         # generator = crossover(graph, crossover_i, crossover_j)
         # list_of_humans.extend(generator)
