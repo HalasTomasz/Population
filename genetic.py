@@ -181,7 +181,7 @@ na koneic appenduje nowa generacje
 """
 
 
-def crossover(graph, get_child_function, i, j,method_selected):
+def crossover(graph, get_child_function, i, j, method_selected):
     global selected_parents, list_of_humans
 
     new_generation = []
@@ -211,6 +211,7 @@ def get_child(graph, parent, i, j):
 
     used_numbers = []
     used_numbers2 = []
+
     sec_parent = list_of_humans[parent].do_sex()
     first_parent = parent
     list_of_humans[sec_parent].do_remove(first_parent)
@@ -255,6 +256,7 @@ def get_child_partially_mapped(graph, parent, i, j):
 
     used_numbers = []
     used_numbers2 = []
+
     sec_parent = list_of_humans[parent].do_sex()
     first_parent = parent
     list_of_humans[sec_parent].do_remove(first_parent)
@@ -302,6 +304,77 @@ def get_child_partially_mapped(graph, parent, i, j):
 
     return child, child2
 
+
+def get_child_cycle(graph, parent, i, j):
+    global list_of_humans, population_size
+
+    child = [None] * graph.number_of_nodes()
+    child2 = [None] * graph.number_of_nodes()
+
+    used_numbers = []
+    used_numbers2 = []
+
+    mapping = {}
+    mapping2 = {}
+
+    sec_parent = list_of_humans[parent].do_sex()
+    first_parent = parent
+    list_of_humans[sec_parent].do_remove(first_parent)
+
+    for i in range(len(child)):
+        first_gene = list_of_humans[first_parent].perm[i]
+        second_gene = list_of_humans[sec_parent].perm[i]
+
+        mapping[first_gene] = second_gene
+        mapping2[second_gene] = first_gene
+
+    i = 0
+    used_parent = first_parent
+    used_mapping = mapping
+    while i < len(child):
+        first_gene = list_of_humans[used_parent].perm[i]
+        second_gene = used_mapping[first_gene]
+
+        if child[i] is None:
+            child[i] = first_gene
+            used_numbers.append(first_gene)
+
+            while second_gene not in used_numbers:
+                first_gene = second_gene
+                second_gene = used_mapping[first_gene]
+                index = list_of_humans[used_parent].perm.index(first_gene)
+
+                if child[index] is None:
+                    child[index] = first_gene
+                    used_numbers.append(first_gene)
+            used_mapping = mapping2 if used_mapping == mapping else mapping
+            used_parent = first_parent if used_parent == sec_parent else sec_parent
+        i += 1
+
+    i = 0
+    used_parent = sec_parent
+    used_mapping = mapping2
+    while i < len(child2):
+        first_gene = list_of_humans[used_parent].perm[i]
+        second_gene = used_mapping[first_gene]
+
+        if child2[i] is None:
+            child2[i] = first_gene
+            used_numbers2.append(first_gene)
+
+            while second_gene not in used_numbers2:
+                first_gene = second_gene
+                second_gene = used_mapping[first_gene]
+                index = list_of_humans[used_parent].perm.index(first_gene)
+
+                if child2[index] is None:
+                    child2[index] = first_gene
+                    used_numbers2.append(first_gene)
+            used_mapping = mapping2 if used_mapping == mapping else mapping
+            used_parent = first_parent if used_parent == sec_parent else sec_parent
+        i += 1
+
+    return child, child2
 
 # mutacja osobników, %-owa szansa na wykonanie inwersji losowych indeksów
 """
@@ -382,9 +455,11 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
         crossover_j = math.floor(graph.number_of_nodes() * 2 / 3)
 
         if crossover_type == "order_crossover":
-            list_of_humans = crossover(graph, get_child, crossover_i, crossover_j,selection_type)  # POSSIBLE OUTCOME
+            list_of_humans = crossover(graph, get_child, crossover_i, crossover_j, selection_type)  # POSSIBLE OUTCOME
         elif crossover_type == "mapped_crossover":
-            list_of_humans = crossover(graph, get_child_partially_mapped, crossover_i, crossover_j,selection_type)  # POSSIBLE OUTCOME
+            list_of_humans = crossover(graph, get_child_partially_mapped, crossover_i, crossover_j, selection_type)  # POSSIBLE OUTCOME
+        elif crossover_type == "cycle_crossover":
+            list_of_humans = crossover(graph, get_child_cycle, crossover_i, crossover_j, selection_type)
 
         # generator = crossover(graph, crossover_i, crossover_j)
         # list_of_humans.extend(generator)

@@ -21,9 +21,10 @@ if __name__ == '__main__':
     population_size = int(re.findall(r'\d+', filename)[0])
     number_of_iterations = 600
     mutation_prob = 0.05
-    crossover_type = "mapped_crossover"
+    selection_type = "roul"
+    crossover_type = "cycle_crossover"
 
     solution, solution_distance = genetic.genetic(graph, population_size, mutation_prob, number_of_iterations,
-                                                  crossover_type)
+                                                  selection_type, crossover_type)
     print(solution)
     print(solution_distance)
