@@ -1,3 +1,6 @@
+import re
+import time
+
 import genetic
 import tsplib95
 import testownik
@@ -21,11 +24,14 @@ if __name__ == '__main__':
     # number_of_iterations = 600
     # mutation_prob = 0.05
     # selection_type = "roul"
-    # crossover_type = "cycle_crossover"
-
-    # solution, solution_distance = genetic.genetic(graph, population_size, mutation_prob, number_of_iterations,
-    #                                               selection_type, crossover_type)
+    # crossover_type = "mapped_crossover"
+    # start_time = time.process_time()
+    #
+    # solution, solution_distance, iterations = genetic.genetic(graph, population_size, mutation_prob,
+    #                                                           number_of_iterations, selection_type, crossover_type,
+    #                                                           start_time)
     # print(solution)
     # print(solution_distance)
     
-    testownik.test_nr_mutex()
+    # testownik.test_nr_mutex()
+    testownik.test_city("Data_Meta")

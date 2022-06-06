@@ -97,16 +97,15 @@ Check if correct
 def tournament():
     global population_size, list_of_humans, selected_parents, selected_second_parents
     i = 0
-    while i != population_size//2:
-        
+    while i != population_size // 2:
         number_list = random.sample(range(0, population_size - 1), 5)
         number_list = sorted(number_list, key=lambda x: list_of_humans[x].dis)  # sort by dis
         first = number_list[0]
-        
+
         number_list = random.sample(range(0, population_size - 1), 5)
         number_list = sorted(number_list, key=lambda x: list_of_humans[x].dis)
         second = number_list[0]
-        
+
         list_of_humans[first].set_coparent(second)  ## Adiing only the best!
         list_of_humans[second].set_coparent(first)
         selected_parents.add(first)
@@ -126,7 +125,7 @@ Dodoaje do seta 1 rodzica
 def uni_parent():
     global population_size, list_of_humans, selected_parents, selected_second_parents
     i = 0
-    while i != population_size//2:  # Moze by orgraniczyć liczbe rozmnażania?
+    while i != population_size // 2:  # Moze by orgraniczyć liczbe rozmnażania?
         first_parent = random.randint(0, population_size - 1)
         second_parent = random.randint(0, population_size - 1)
         if first_parent == second_parent:  # sam ze soba sie nie  moze XDD
@@ -155,10 +154,10 @@ def roul_parent():
 
         roulette_compartment += roulette_prob  # CZY TO ŻE TABLICA LUDZI JEST POSORTOWANA COS ZMIENIA?
 
-    for i in range(population_size//2):
+    for i in range(population_size // 2):
         first_parent = get_parent(random.random())
         second_parent = get_parent(random.random())
-        print(first_parent,second_parent)
+        print(first_parent, second_parent)
         list_of_humans[first_parent].set_coparent(second_parent)
         list_of_humans[second_parent].set_coparent(first_parent)
         selected_parents.add(first_parent)
@@ -168,7 +167,7 @@ def roul_parent():
 def get_parent(random_number):
     global list_of_humans
     i = 0
-    for parent in list_of_humans: 
+    for parent in list_of_humans:
         if parent.roul_start <= random_number <= parent.roul_finish:
             return i
         i += 1
@@ -384,6 +383,7 @@ def get_child_cycle(graph, parent, i, j):
 
     return child, child2
 
+
 # mutacja osobników, %-owa szansa na wykonanie inwersji losowych indeksów
 """
 Mutacja lecz wykorzystuej kalsy
@@ -445,7 +445,8 @@ KONIEC SEKCJI Zabij itp
 
 
 # główna funkcja
-def genetic(graph, population_number, mutation_chance, number_of_iterations, selection_type, crossover_type,start_time):
+def genetic(graph, population_number, mutation_chance, number_of_iterations, selection_type, crossover_type,
+            start_time):
     global list_of_humans, population_size, mutation_prob, total_adapt_points, best_solution_distance, best_solution
 
     population_size = population_number
@@ -454,7 +455,7 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
     generate_start_population(graph)  # Now we get list of humans
 
     for i in range(number_of_iterations):
-        
+
         selection(base=selection_type)  # CHANGE THE BASE!
 
         crossover_i = math.floor(graph.number_of_nodes() / 3)
@@ -463,7 +464,8 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
         if crossover_type == "order_crossover":
             list_of_humans = crossover(graph, get_child, crossover_i, crossover_j, selection_type)  # POSSIBLE OUTCOME
         elif crossover_type == "mapped_crossover":
-            list_of_humans = crossover(graph, get_child_partially_mapped, crossover_i, crossover_j, selection_type)  # POSSIBLE OUTCOME
+            list_of_humans = crossover(graph, get_child_partially_mapped, crossover_i, crossover_j,
+                                       selection_type)  # POSSIBLE OUTCOME
         elif crossover_type == "cycle_crossover":
             list_of_humans = crossover(graph, get_child_cycle, crossover_i, crossover_j, selection_type)
 
@@ -473,9 +475,9 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
 
         final_check()
         population_size = len(list_of_humans)
-        
-        if time.time() - start_time >360:
-            return best_solution, best_solution_distance,i
+
+        if time.time() - start_time > 360:
+            return best_solution, best_solution_distance, i
     # i = 0
     # for x in list_of_humans:
     # x.set_human_id(i)
