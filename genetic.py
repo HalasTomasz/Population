@@ -1,6 +1,7 @@
 import math
 import random
 import numpy as np
+import time
 from chromosome import Human
 # from selector import uni_parent
 from base_func import calc_dist, inversion  # Basic known functions
@@ -96,13 +97,19 @@ Check if correct
 def tournament():
     global population_size, list_of_humans, selected_parents, selected_second_parents
     i = 0
-    while i != 30:
+    while i != population_size//2:
+        
         number_list = random.sample(range(0, population_size - 1), 5)
         number_list = sorted(number_list, key=lambda x: list_of_humans[x].dis)  # sort by dis
-
-        list_of_humans[number_list[0]].set_coparent(number_list[1])  ## Adiing only the best!
-        list_of_humans[number_list[1]].set_coparent(number_list[0])
-        selected_parents.add(number_list[0])
+        first = number_list[0]
+        
+        number_list = random.sample(range(0, population_size - 1), 5)
+        number_list = sorted(number_list, key=lambda x: list_of_humans[x].dis)
+        second = number_list[0]
+        
+        list_of_humans[first].set_coparent(second)  ## Adiing only the best!
+        list_of_humans[second].set_coparent(first)
+        selected_parents.add(first)
         i += 1
     # print("Parents  ", selected_parents)
 
@@ -119,7 +126,7 @@ Dodoaje do seta 1 rodzica
 def uni_parent():
     global population_size, list_of_humans, selected_parents, selected_second_parents
     i = 0
-    while i != 30:  # Moze by orgraniczyć liczbe rozmnażania?
+    while i != population_size//2:  # Moze by orgraniczyć liczbe rozmnażania?
         first_parent = random.randint(0, population_size - 1)
         second_parent = random.randint(0, population_size - 1)
         if first_parent == second_parent:  # sam ze soba sie nie  moze XDD
@@ -148,9 +155,10 @@ def roul_parent():
 
         roulette_compartment += roulette_prob  # CZY TO ŻE TABLICA LUDZI JEST POSORTOWANA COS ZMIENIA?
 
-    for i in range(30):
+    for i in range(population_size//2):
         first_parent = get_parent(random.random())
         second_parent = get_parent(random.random())
+        print(first_parent,second_parent)
         list_of_humans[first_parent].set_coparent(second_parent)
         list_of_humans[second_parent].set_coparent(first_parent)
         selected_parents.add(first_parent)
@@ -160,7 +168,7 @@ def roul_parent():
 def get_parent(random_number):
     global list_of_humans
     i = 0
-    for parent in list_of_humans:
+    for parent in list_of_humans: 
         if parent.roul_start <= random_number <= parent.roul_finish:
             return i
         i += 1
@@ -399,7 +407,6 @@ def mutation(graph, generation, method="roul"):
         else:
             total_cost += generation[index].dis
     selected_parents = set()
-    print("TOTAL  ", total_cost)
     return generation
 
 
@@ -410,7 +417,6 @@ def final_check():
     for i in range(len(list_of_humans)):
 
         if best_solution_distance > list_of_humans[i].dis:
-            print("HERE")
             best_solution_distance = list_of_humans[i].dis
             best_solution = list_of_humans[i].perm
 
@@ -439,7 +445,7 @@ KONIEC SEKCJI Zabij itp
 
 
 # główna funkcja
-def genetic(graph, population_number, mutation_chance, number_of_iterations, selection_type, crossover_type):
+def genetic(graph, population_number, mutation_chance, number_of_iterations, selection_type, crossover_type,start_time):
     global list_of_humans, population_size, mutation_prob, total_adapt_points, best_solution_distance, best_solution
 
     population_size = population_number
@@ -467,7 +473,9 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
 
         final_check()
         population_size = len(list_of_humans)
-
+        
+        if time.time() - start_time >360:
+            return best_solution, best_solution_distance,i
     # i = 0
     # for x in list_of_humans:
     # x.set_human_id(i)
@@ -477,4 +485,4 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
 
     # best_solution, best_solution_distance = list_of_humans[-1].perm, list_of_humans[-1].dis
 
-    return best_solution, best_solution_distance
+    return best_solution, best_solution_distance, number_of_iterations
