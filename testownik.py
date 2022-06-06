@@ -47,7 +47,7 @@ def test_nr_mutex():
     
     types = ['sym', 'asym', 'eu']
     collection = []
-    mutex = [0.05, 0.1, 0.15,0.2, 0.3, 0.5]
+    mutation_table = [0.05, 0.1, 0.15,0.2, 0.3, 0.5]
     seed=100
     size = 100
     
@@ -58,7 +58,7 @@ def test_nr_mutex():
     for i in range(2): # 10
         for type_of_graph in types:
             for iteration in range(100,201,100): # liczba iteracji
-                for mutation in mutex:
+                for mutation in mutation_table:
 
                     if  type_of_graph == "sym":
                         
@@ -71,14 +71,14 @@ def test_nr_mutex():
                     else:
                         graph = graph_asym
         
-                    # start = time.process_time()
+                    start = time.process_time()
         
-                    # permutation, cost, itera = genetic.genetic(graph, size**2, mutation, iteration, "roul", "order_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size**2, mutation, iteration, "roul", "order_crossover", start)
         
-                    # end = time.process_time()
+                    end = time.process_time()
         
-                    # collection.append(
-                    #             DataMutex(type_of_graph, 'roul' + " order", end - start, cost, str(permutation), size,itera,mutation))
+                    collection.append(
+                                DataMutex(type_of_graph, 'roul' + " order", end - start, cost, str(permutation), size,itera,mutation))
                     
               
         
@@ -105,14 +105,14 @@ def test_nr_mutex():
                     ##############################################################################################
                         
         
-                    # start = time.process_time()
+                    start = time.process_time()
         
-                    # permutation, cost, itera = genetic.genetic(graph, size**2, mutation, iteration, "roul", "mapped_crossover",start)
+                    permutation, cost, itera = genetic.genetic(graph, size**2, mutation, iteration, "roul", "mapped_crossover",start)
         
-                    # end = time.process_time()
+                    end = time.process_time()
         
-                    # collection.append(
-                    #             DataMutex(type_of_graph, 'roul' + " map", end - start, cost, str(permutation), size,itera,mutation))
+                    collection.append(
+                                DataMutex(type_of_graph, 'roul' + " map", end - start, cost, str(permutation), size,itera,mutation))
                     
         
                     start = time.process_time()
@@ -138,14 +138,14 @@ def test_nr_mutex():
                     ###########################################################################################
                     
                            
-                    # start = time.process_time()
+                    start = time.process_time()
         
-                    # permutation, cost, itera = genetic.genetic(graph, size**2, mutation, iteration, "roul", "cycle_crossover",start)
+                    permutation, cost, itera = genetic.genetic(graph, size**2, mutation, iteration, "roul", "cycle_crossover",start)
         
-                    # end = time.process_time()
+                    end = time.process_time()
         
-                    # collection.append(
-                    #             DataMutex(type_of_graph, 'roul' + " cycle", end - start, cost, str(permutation), size,itera,mutation))
+                    collection.append(
+                                DataMutex(type_of_graph, 'roul' + " cycle", end - start, cost, str(permutation), size,itera,mutation))
                     
         
                     start = time.process_time()
@@ -169,7 +169,7 @@ def test_nr_mutex():
                                 DataMutex(type_of_graph, 'tour' + " cycle", end - start, cost, str(permutation), size,itera,mutation))
    
     try:
-        file = open("Mutation Test", "w")
+        file = open("Mutation Test2", "w")
         json.dump(collection, file, indent=3)
     except IOError:
         pass
@@ -207,69 +207,99 @@ def test_path():
         
                     start = time.process_time()
         
-                    permutation, cost = genetic.genetic(graph, 100, 0.1, iteration, "roul", "order_crossover")
+                    permutation, cost, itera = genetic.genetic(graph, graph_size**2, 0.1, iteration, "roul", "order_crossover",start)
         
                     end = time.process_time()
         
                     collection.append(
-                                Data(type_of_graph, 'roul' + " order", end - start, cost, str(permutation), graph_size,iteration))
+                                Data(type_of_graph, 'roul' + " order", end - start, cost, str(permutation), graph_size,itera))
                     
               
         
                     start = time.process_time()
         
-                    permutation, cost = genetic.genetic(graph, 100, 0.1, iteration, "random", "order_crossover")
+                    permutation, cost, itera = genetic.genetic(graph, graph_size**2, 0.1, iteration, "random", "order_crossover", start)
         
                     end = time.process_time()
         
                     collection.append(
-                                Data(type_of_graph, 'rand' + " order", end - start, cost, str(permutation), graph_size,iteration))
+                                Data(type_of_graph, 'rand' + " order", end - start, cost, str(permutation), graph_size,itera))
                     
                     
         
                     start = time.process_time()
         
-                    permutation, cost = genetic.genetic(graph, 100, 0.1, iteration, "tour", "order_crossover")
+                    permutation, cost, itera = genetic.genetic(graph, graph_size**2, 0.1, iteration, "tour", "order_crossover", start)
         
                     end = time.process_time()
         
                     collection.append(
-                                Data(type_of_graph, 'tour' + " order", end - start, cost, str(permutation), graph_size,iteration))
+                                Data(type_of_graph, 'tour' + " order", end - start, cost, str(permutation), graph_size,itera))
                     
                     ##############################################################################################
                         
         
                     start = time.process_time()
         
-                    permutation, cost = genetic.genetic(graph, 100, 0.1, iteration, "roul", "mapped_crossover")
+                    permutation, cost, itera = genetic.genetic(graph, graph_size**2, 0.1, iteration, "roul", "mapped_crossover", start)
         
                     end = time.process_time()
         
                     collection.append(
-                                Data(type_of_graph, 'roul' + " map", end - start, cost, str(permutation), graph_size,iteration))
+                                Data(type_of_graph, 'roul' + " map", end - start, cost, str(permutation), graph_size,itera))
                     
         
                     start = time.process_time()
         
-                    permutation, cost = genetic.genetic(graph, 100, 0.1, iteration, "random", "mapped_crossover")
+                    permutation, cost, itera = genetic.genetic(graph, graph_size**2, 0.1, iteration, "random", "mapped_crossover", start)
         
                     end = time.process_time()
         
                     collection.append(
-                                Data(type_of_graph, 'rand' + " map", end - start, cost, str(permutation), graph_size,iteration))
+                                Data(type_of_graph, 'rand' + " map", end - start, cost, str(permutation), graph_size,itera))
                     
                     
         
                     start = time.process_time()
         
-                    permutation, cost = genetic.genetic(graph, 100, 0.1, iteration, "tour", "mapped_crossover")
+                    permutation, cost, itera = genetic.genetic(graph, graph_size**2, 0.1, iteration, "tour", "mapped_crossover", start)
         
                     end = time.process_time()
         
                     collection.append(
-                                Data(type_of_graph, 'tour' + " map", end - start, cost, str(permutation), graph_size,iteration))
+                                Data(type_of_graph, 'tour' + " map", end - start, cost, str(permutation), graph_size,itera))
                     
                     ###########################################################################################
+                    
+                    start = time.process_time()
+        
+                    permutation, cost,itera = genetic.genetic(graph, graph_size**2, 0.1, iteration, "roul", "cycle_crossover", start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                Data(type_of_graph, 'roul' + " cycle", end - start, cost, str(permutation), graph_size,itera))
+                    
+        
+                    start = time.process_time()
+        
+                    permutation, cost = genetic.genetic(graph, graph_size**2, 0.1, iteration, "random", "cycle_crossover", start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                Data(type_of_graph, 'rand' + " cycle", end - start, cost, str(permutation), graph_size,itera))
+                    
+                    
+        
+                    start = time.process_time()
+        
+                    permutation, cost = genetic.genetic(graph, graph_size**2, 0.1, iteration, "tour", "cycle_crossover", start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                Data(type_of_graph, 'tour' + " cycle", end - start, cost, str(permutation), graph_size,itera))
                     
                       
     try:
@@ -280,14 +310,15 @@ def test_path():
     finally:
         file.close()
 
-def DataCov(Type, sel_cross, solution, total, n, ite):
+def DataCov(Type, sel_cross, solution, total, n, ite, people):
     Dic = {
             'Type': Type,
             'type_of': sel_cross,
             'solution': solution,
             'total_cost': total,
             'size_of_graph': n,
-            'iteation':ite
+            'iteation':ite,
+            'people': people
             # 'memory'
 
         }
@@ -303,30 +334,30 @@ def Test_cov():
     for type_of_graph in types:
         for iteration in range(100,1001,100): # liczba iteracji
             for graph_size in  range(50,200,50):
-
-                graph = base_func.generate_graph(graph_size, seed, type_of_graph)
-             #GET THE LIST OF TOTAL COST DURING ITERATIONS
-    
-                permutation, cost = genetic.genetic(graph, 100, 0.1, iteration, "roul", "order_crossover")
-    
-    
-                collection.append(
-                            DataCov(type_of_graph, 'roul' + " order", cost , total_cost, graph_size,iteration))
-                
-          
-                permutation, cost = genetic.genetic(graph, 100, 0.1, iteration, "random", "order_crossover")
-    
-                
-                collection.append(
-                            DataCov(type_of_graph, 'rand' + " order", cost , total_cost, graph_size,iteration))
-                
-                
-    
-                permutation, cost = genetic.genetic(graph, 100, 0.1, iteration, "tour", "order_crossover")
-    
-    
-                collection.append(
-                            DataCov(type_of_graph, 'tour' + " order", cost , total_cost, graph_size,iteration))
+                for  popualtion in range(200,2 *graph_size**2, 400)
+                    graph = base_func.generate_graph(graph_size, seed, type_of_graph)
+                 #GET THE LIST OF TOTAL COST DURING ITERATIONS
+        
+                    permutation, cost = genetic.genetic(graph, popualtion, 0.1, iteration, "roul", "order_crossover")
+        
+        
+                    collection.append(
+                                DataCov(type_of_graph, 'roul' + " order", cost , total_cost, graph_size,iteration))
+                    
+              
+                    permutation, cost = genetic.genetic(graph, popualtion, 0.1, iteration, "random", "order_crossover")
+        
+                    
+                    collection.append(
+                                DataCov(type_of_graph, 'rand' + " order", cost , total_cost, graph_size,iteration))
+                    
+                    
+        
+                    permutation, cost = genetic.genetic(graph, popualtion, 0.1, iteration, "tour", "order_crossover")
+        
+        
+                    collection.append(
+                                DataCov(type_of_graph, 'tour' + " order", cost , total_cost, graph_size,iteration))
                 
                   
     try:
@@ -336,3 +367,162 @@ def Test_cov():
         pass
     finally:
         file.close()
+        
+def test_city(path):
+    print(path)
+    collector = []
+    file_number = 0
+    mutation_table = [0.05, 0.1, 0.15,0.2, 0.3, 0.5]
+    for filename in os.listdir(path):
+        file_number += 1
+        if file_number > 10:
+            break
+
+        path_to_folder = path + "/" + filename
+        path_to_tsp = r"" + path + "/" + filename + '/' + filename
+        answer = set([os.path.dirname(p) for p in glob.glob(path_to_folder + "/*/*")])
+
+        assert os.path.isfile(path_to_tsp)
+        with open(path_to_tsp, "r") as f:
+
+            print("Solving :" + filename)
+            problem = tsplib95.read(f)
+            graph = problem.get_graph()
+            graph = graph.to_directed()
+
+            if answer:
+                path_to_tour = path_to_folder + "/" + filename.split('.')[0] + ".opt.tour" + "/" + filename.split('.')[
+                    0] + ".opt.tour"
+                opt = problem.trace_tours(opt.tours)
+                print("Rozwiązanie optymalne: ", problem.trace_tours(opt.tours))
+            else:
+                opt = "None"
+          
+            for pop_size in range( graph.number_of_nodes(),  2* pow(graph.number_of_nodes(), 2), 300 )
+                for mutation in mutation_table:
+                    
+                    start = time.process_time()
+        
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "roul", "order_crossover", start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                DataMutex(type_of_graph, 'roul' + " order", end - start, cost, str(permutation), size,itera,mutation))
+                    
+              
+        
+                    start = time.process_time()
+        
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "random", "order_crossover", start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                DataMutex(type_of_graph, 'rand' + " order", end - start, cost, str(permutation), size,itera,mutation))
+                    
+                    
+        
+                    start = time.process_time()
+        
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "tour", "order_crossover",start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                DataMutex(type_of_graph, 'rand' + " order", end - start, cost, str(permutation), size,itera,mutation))
+                    
+                    ##############################################################################################
+                        
+        
+                    start = time.process_time()
+        
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "roul", "mapped_crossover",start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                DataMutex(type_of_graph, 'roul' + " map", end - start, cost, str(permutation), size,itera,mutation))
+                    
+        
+                    start = time.process_time()
+        
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "random", "mapped_crossover",start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                DataMutex(type_of_graph, 'rand' + " map", end - start, cost, str(permutation), size,itera,mutation))
+                    
+                    
+        
+                    start = time.process_time()
+        
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "tour", "mapped_crossover",start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                DataMutex(type_of_graph, 'tour' + " map", end - start, cost, str(permutation), size,itera,mutation))
+                    
+                    ###########################################################################################
+                    
+                           
+                    start = time.process_time()
+        
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "roul", "cycle_crossover",start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                DataMutex(type_of_graph, 'roul' + " cycle", end - start, cost, str(permutation), size,itera,mutation))
+                    
+        
+                    start = time.process_time()
+        
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "random", "cycle_crossover",start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                DataMutex(type_of_graph, 'rand' + " cycle", end - start, cost, str(permutation), size,itera,mutation))
+                    
+                    
+        
+                    start = time.process_time()
+        
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "tour", "cycle_crossover",start)
+        
+                    end = time.process_time()
+        
+                    collection.append(
+                                DataMutex(type_of_graph, 'tour' + " cycle", end - start, cost, str(permutation), size,itera,mutation))
+
+    try:
+        with open('City', 'w') as fout:
+            json.dump(collector, fout)
+    except IOError:
+        pass
+    finally:
+        fout.close()
+
+
+"""
+dic to save data to JSON 
+"""
+
+
+def DataGraph(Type, func, t, solution, permutation, tabu, n,opt):
+    Dic = {
+        'Type': Type,
+        'function': func,
+        'time': t,
+        'solution': solution,
+        'size_of tabu': tabu,
+        'size_of_graph': n,
+        'optimal_solution': opt
+        # 'memory'
+
+    }
+    return Dic
+
