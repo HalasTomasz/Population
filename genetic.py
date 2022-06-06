@@ -154,6 +154,8 @@ def roul_parent():
 
         roulette_compartment += roulette_prob  # CZY TO ŻE TABLICA LUDZI JEST POSORTOWANA COS ZMIENIA?
 
+    print(roulette_compartment)
+
     for i in range(population_size // 2):
         first_parent = get_parent(random.random())
         second_parent = get_parent(random.random())
@@ -449,12 +451,17 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
             start_time):
     global list_of_humans, population_size, mutation_prob, total_adapt_points, best_solution_distance, best_solution
 
+    total_adapt_points = 0
+    best_solution = []
+    best_solution_distance = np.inf
+
     population_size = population_number
     mutation_prob = mutation_chance
 
     generate_start_population(graph)  # Now we get list of humans
 
-    for i in range(number_of_iterations):
+    i = 0
+    while i in range(number_of_iterations):
 
         selection(base=selection_type)  # CHANGE THE BASE!
 
@@ -476,7 +483,7 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
         final_check()
         population_size = len(list_of_humans)
 
-        if time.time() - start_time > 360:
+        if time.process_time() - start_time > 3:
             return best_solution, best_solution_distance, i
     # i = 0
     # for x in list_of_humans:

@@ -5,6 +5,7 @@ import genetic
 import tsplib95
 import testownik
 
+
 def read_graph_input(file):
     with open(file) as f:
         problem = tsplib95.read(f)
@@ -21,7 +22,7 @@ if __name__ == '__main__':
     # filename = 'bays29.tsp'
     # graph = read_graph_input(filename)
     # population_size = int(re.findall(r'\d+', filename)[0])
-    # number_of_iterations = 600
+    # number_of_iterations = 4000
     # mutation_prob = 0.05
     # selection_type = "roul"
     # crossover_type = "mapped_crossover"
