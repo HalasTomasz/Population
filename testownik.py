@@ -24,6 +24,9 @@ THNIK ABOUT
 import base_func
 import genetic
 import time
+import tsplib95
+import os
+import glob
 import json
 # "random" , "roul" , "tour"
 # "order_crossover", "mapped_crossover"
@@ -310,67 +313,11 @@ def test_path():
     finally:
         file.close()
 
-def DataCov(Type, sel_cross, solution, total, n, ite, people):
-    Dic = {
-            'Type': Type,
-            'type_of': sel_cross,
-            'solution': solution,
-            'total_cost': total,
-            'size_of_graph': n,
-            'iteation':ite,
-            'people': people
-            # 'memory'
 
-        }
-    return Dic
-
-def Test_cov():
-      
-    types = ['sym']
-    collection = []
-
-    seed=100
-    # Incerase Number of Popualtion?
-    for type_of_graph in types:
-        for iteration in range(100,1001,100): # liczba iteracji
-            for graph_size in  range(50,200,50):
-                for  popualtion in range(200,2 *graph_size**2, 400)
-                    graph = base_func.generate_graph(graph_size, seed, type_of_graph)
-                 #GET THE LIST OF TOTAL COST DURING ITERATIONS
-        
-                    permutation, cost = genetic.genetic(graph, popualtion, 0.1, iteration, "roul", "order_crossover")
-        
-        
-                    collection.append(
-                                DataCov(type_of_graph, 'roul' + " order", cost , total_cost, graph_size,iteration))
-                    
-              
-                    permutation, cost = genetic.genetic(graph, popualtion, 0.1, iteration, "random", "order_crossover")
-        
-                    
-                    collection.append(
-                                DataCov(type_of_graph, 'rand' + " order", cost , total_cost, graph_size,iteration))
-                    
-                    
-        
-                    permutation, cost = genetic.genetic(graph, popualtion, 0.1, iteration, "tour", "order_crossover")
-        
-        
-                    collection.append(
-                                DataCov(type_of_graph, 'tour' + " order", cost , total_cost, graph_size,iteration))
-                
-                  
-    try:
-        file = open("Data Test", "w")
-        json.dump(collection, file, indent=3)
-    except IOError:
-        pass
-    finally:
-        file.close()
         
 def test_city(path):
     print(path)
-    collector = []
+    collection = []
     file_number = 0
     mutation_table = [0.05, 0.1, 0.15,0.2, 0.3, 0.5]
     for filename in os.listdir(path):
@@ -393,17 +340,18 @@ def test_city(path):
             if answer:
                 path_to_tour = path_to_folder + "/" + filename.split('.')[0] + ".opt.tour" + "/" + filename.split('.')[
                     0] + ".opt.tour"
+                opt = tsplib95.load(path_to_tour)
                 opt = problem.trace_tours(opt.tours)
-                print("Rozwiązanie optymalne: ", problem.trace_tours(opt.tours))
+                print("Rozwiązanie optymalne: ", opt)
             else:
                 opt = "None"
           
-            for pop_size in range( graph.number_of_nodes(),  2* pow(graph.number_of_nodes(), 2), 300 )
+            for pop_size in range( graph.number_of_nodes(),  2* pow(graph.number_of_nodes(), 2), 300 ):
                 for mutation in mutation_table:
                     
                     start = time.process_time()
         
-                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "roul", "order_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, 1000, "roul", "order_crossover", start)
         
                     end = time.process_time()
         
@@ -414,7 +362,7 @@ def test_city(path):
         
                     start = time.process_time()
         
-                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "random", "order_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, 1000, "random", "order_crossover", start)
         
                     end = time.process_time()
         
@@ -425,7 +373,7 @@ def test_city(path):
         
                     start = time.process_time()
         
-                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "tour", "order_crossover",start)
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, 1000, "tour", "order_crossover",start)
         
                     end = time.process_time()
         
@@ -437,7 +385,7 @@ def test_city(path):
         
                     start = time.process_time()
         
-                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "roul", "mapped_crossover",start)
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, 1000, "roul", "mapped_crossover",start)
         
                     end = time.process_time()
         
@@ -447,7 +395,7 @@ def test_city(path):
         
                     start = time.process_time()
         
-                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "random", "mapped_crossover",start)
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, 1000, "random", "mapped_crossover",start)
         
                     end = time.process_time()
         
@@ -458,7 +406,7 @@ def test_city(path):
         
                     start = time.process_time()
         
-                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "tour", "mapped_crossover",start)
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, 1000, "tour", "mapped_crossover",start)
         
                     end = time.process_time()
         
@@ -470,7 +418,7 @@ def test_city(path):
                            
                     start = time.process_time()
         
-                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "roul", "cycle_crossover",start)
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, 1000, "roul", "cycle_crossover",start)
         
                     end = time.process_time()
         
@@ -480,7 +428,7 @@ def test_city(path):
         
                     start = time.process_time()
         
-                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "random", "cycle_crossover",start)
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, 1000, "random", "cycle_crossover",start)
         
                     end = time.process_time()
         
@@ -491,7 +439,7 @@ def test_city(path):
         
                     start = time.process_time()
         
-                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, iteration, "tour", "cycle_crossover",start)
+                    permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, 1000, "tour", "cycle_crossover",start)
         
                     end = time.process_time()
         
@@ -500,7 +448,7 @@ def test_city(path):
 
     try:
         with open('City', 'w') as fout:
-            json.dump(collector, fout)
+            json.dump(collection, fout)
     except IOError:
         pass
     finally:
@@ -512,7 +460,7 @@ dic to save data to JSON
 """
 
 
-def DataCityType, func, t, solution, permutation, tabu, n,iterations, mutation, opt):
+def DataCity( Type, func, t, solution, permutation, tabu, n,iterations, mutation, opt):
     Dic = {
         'Type': Type,
         'function': func,
@@ -528,3 +476,60 @@ def DataCityType, func, t, solution, permutation, tabu, n,iterations, mutation, 
     }
     return Dic
 
+# def DataCov(Type, sel_cross, solution, total, n, ite, people):
+#     Dic = {
+#             'Type': Type,
+#             'type_of': sel_cross,
+#             'solution': solution,
+#             'total_cost': total,
+#             'size_of_graph': n,
+#             'iteation':ite,
+#             'people': people
+#             # 'memory'
+
+#         }
+#     return Dic
+
+# def Test_cov():
+      
+#     types = ['sym']
+#     collection = []
+
+#     seed=100
+#     # Incerase Number of Popualtion?
+#     for type_of_graph in types:
+#         for iteration in range(100,1001,100): # liczba iteracji
+#             for graph_size in  range(50,200,50):
+#                 for  popualtion in range(200,2 *graph_size**2, 400)
+#                     graph = base_func.generate_graph(graph_size, seed, type_of_graph)
+#                  #GET THE LIST OF TOTAL COST DURING ITERATIONS
+        
+#                     permutation, cost = genetic.genetic(graph, popualtion, 0.1, iteration, "roul", "order_crossover")
+        
+        
+#                     collection.append(
+#                                 DataCov(type_of_graph, 'roul' + " order", cost , total_cost, graph_size,iteration))
+                    
+              
+#                     permutation, cost = genetic.genetic(graph, popualtion, 0.1, iteration, "random", "order_crossover")
+        
+                    
+#                     collection.append(
+#                                 DataCov(type_of_graph, 'rand' + " order", cost , total_cost, graph_size,iteration))
+                    
+                    
+        
+#                     permutation, cost = genetic.genetic(graph, popualtion, 0.1, iteration, "tour", "order_crossover")
+        
+        
+#                     collection.append(
+#                                 DataCov(type_of_graph, 'tour' + " order", cost , total_cost, graph_size,iteration))
+                
+                  
+#     try:
+#         file = open("Data Test", "w")
+#         json.dump(collection, file, indent=3)
+#     except IOError:
+#         pass
+#     finally:
+#         file.close()
