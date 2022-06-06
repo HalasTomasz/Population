@@ -408,7 +408,7 @@ def test_city(path):
                     end = time.process_time()
         
                     collection.append(
-                                DataMutex(type_of_graph, 'roul' + " order", end - start, cost, str(permutation), size,itera,mutation))
+                                DataMutex(filename, 'roul' + " order", end - start, cost, str(permutation), graph.number_of_nodes(),itera,mutation, opt))
                     
               
         
@@ -419,7 +419,7 @@ def test_city(path):
                     end = time.process_time()
         
                     collection.append(
-                                DataMutex(type_of_graph, 'rand' + " order", end - start, cost, str(permutation), size,itera,mutation))
+                                DataMutex(filename, 'rand' + " order", end - start, cost, str(permutation), graph.number_of_nodes(),itera,mutation, opt))
                     
                     
         
@@ -430,7 +430,7 @@ def test_city(path):
                     end = time.process_time()
         
                     collection.append(
-                                DataMutex(type_of_graph, 'rand' + " order", end - start, cost, str(permutation), size,itera,mutation))
+                                DataMutex(filename, 'rand' + " order", end - start, cost, str(permutation), graph.number_of_nodes(),itera,mutation, opt))
                     
                     ##############################################################################################
                         
@@ -442,7 +442,7 @@ def test_city(path):
                     end = time.process_time()
         
                     collection.append(
-                                DataMutex(type_of_graph, 'roul' + " map", end - start, cost, str(permutation), size,itera,mutation))
+                                DataMutex(filename, 'roul' + " map", end - start, cost, str(permutation), graph.number_of_nodes(),itera,mutation, opt))
                     
         
                     start = time.process_time()
@@ -452,7 +452,7 @@ def test_city(path):
                     end = time.process_time()
         
                     collection.append(
-                                DataMutex(type_of_graph, 'rand' + " map", end - start, cost, str(permutation), size,itera,mutation))
+                                DataMutex(filename, 'rand' + " map", end - start, cost, str(permutation), graph.number_of_nodes(),itera,mutation, opt))
                     
                     
         
@@ -463,7 +463,7 @@ def test_city(path):
                     end = time.process_time()
         
                     collection.append(
-                                DataMutex(type_of_graph, 'tour' + " map", end - start, cost, str(permutation), size,itera,mutation))
+                                DataMutex(filename, 'tour' + " map", end - start, cost, str(permutation), graph.number_of_nodes(),itera,mutation, opt))
                     
                     ###########################################################################################
                     
@@ -475,7 +475,7 @@ def test_city(path):
                     end = time.process_time()
         
                     collection.append(
-                                DataMutex(type_of_graph, 'roul' + " cycle", end - start, cost, str(permutation), size,itera,mutation))
+                                DataMutex(filename, 'roul' + " cycle", end - start, cost, str(permutation), graph.number_of_nodes(),itera,mutation, opt))
                     
         
                     start = time.process_time()
@@ -485,7 +485,7 @@ def test_city(path):
                     end = time.process_time()
         
                     collection.append(
-                                DataMutex(type_of_graph, 'rand' + " cycle", end - start, cost, str(permutation), size,itera,mutation))
+                                DataMutex(filename, 'rand' + " cycle", end - start, cost, str(permutation), graph.number_of_nodes(),itera,mutation, opt))
                     
                     
         
@@ -496,7 +496,7 @@ def test_city(path):
                     end = time.process_time()
         
                     collection.append(
-                                DataMutex(type_of_graph, 'tour' + " cycle", end - start, cost, str(permutation), size,itera,mutation))
+                                DataMutex(filename, 'tour' + " cycle", end - start, cost, str(permutation), graph.number_of_nodes(),itera,mutation,opt))
 
     try:
         with open('City', 'w') as fout:
@@ -512,14 +512,16 @@ dic to save data to JSON
 """
 
 
-def DataGraph(Type, func, t, solution, permutation, tabu, n,opt):
+def DataCityType, func, t, solution, permutation, tabu, n,iterations, mutation, opt):
     Dic = {
         'Type': Type,
         'function': func,
         'time': t,
         'solution': solution,
-        'size_of tabu': tabu,
+        'perm': permutation,
         'size_of_graph': n,
+        'iter': iterations,
+        'mutation': mutation,
         'optimal_solution': opt
         # 'memory'
 
