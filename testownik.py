@@ -239,8 +239,13 @@ def test_path():
     # Increase Number of Population?
     for i in range(3):  # 10
         for type_of_graph in types:
-            for algorithm_time in range(30, 100, 30):  # liczba iteracji
-                for graph_size in range(50, 300, 20):
+            print("type: ", type_of_graph)
+            for algorithm_time in range(50, 151, 50):  # liczba iteracji
+                print("algorithm_time: ", algorithm_time)
+                for graph_size in range(100, 201, 50):
+                    
+                    print("graph_size: ", graph_size)
+                    
                     graph = base_func.generate_graph(graph_size, seed, type_of_graph)
 
                     start = time.process_time()
@@ -253,7 +258,9 @@ def test_path():
                     collection.append(
                         Data(type_of_graph, 'roul' + " order", algorithm_time, cost, str(permutation), graph_size,
                              itera))
-
+                    
+                    print("order, roul ended")
+                    
                     start = time.process_time()
 
                     permutation, cost, itera = genetic.genetic(graph, graph_size ** 2, 0.1, "random",
@@ -264,7 +271,9 @@ def test_path():
                     collection.append(
                         Data(type_of_graph, 'rand' + " order", algorithm_time, cost, str(permutation), graph_size,
                              itera))
-
+                    
+                    print("order, rand ended")
+                    
                     start = time.process_time()
 
                     permutation, cost, itera = genetic.genetic(graph, graph_size ** 2, 0.1, "tour",
@@ -275,7 +284,9 @@ def test_path():
                     collection.append(
                         Data(type_of_graph, 'tour' + " order", algorithm_time, cost, str(permutation), graph_size,
                              itera))
-
+                    
+                    print("order, tour ended")
+                    
                     ##############################################################################################
 
                     start = time.process_time()
@@ -287,7 +298,9 @@ def test_path():
 
                     collection.append(
                         Data(type_of_graph, 'roul' + " map", algorithm_time, cost, str(permutation), graph_size, itera))
-
+                    
+                    print("map, roul ended")
+                    
                     start = time.process_time()
 
                     permutation, cost, itera = genetic.genetic(graph, graph_size ** 2, 0.1, "random",
@@ -297,7 +310,9 @@ def test_path():
 
                     collection.append(
                         Data(type_of_graph, 'rand' + " map", algorithm_time, cost, str(permutation), graph_size, itera))
-
+                    
+                    print("map, rand ended")
+                    
                     start = time.process_time()
 
                     permutation, cost, itera = genetic.genetic(graph, graph_size ** 2, 0.1, "tour",
@@ -307,7 +322,9 @@ def test_path():
 
                     collection.append(
                         Data(type_of_graph, 'tour' + " map", algorithm_time, cost, str(permutation), graph_size, itera))
-
+                    
+                    print("map, tour ended")
+                    
                     ###########################################################################################
 
                     start = time.process_time()
@@ -320,7 +337,9 @@ def test_path():
                     collection.append(
                         Data(type_of_graph, 'roul' + " cycle", algorithm_time, cost, str(permutation), graph_size,
                              itera))
-
+                    
+                    print("cycled, roul ended")
+                    
                     start = time.process_time()
 
                     permutation, cost = genetic.genetic(graph, graph_size ** 2, 0.1, "random",
@@ -331,7 +350,9 @@ def test_path():
                     collection.append(
                         Data(type_of_graph, 'rand' + " cycle", algorithm_time, cost, str(permutation), graph_size,
                              itera))
-
+                    
+                    print("cycled, rand ended")
+                    
                     start = time.process_time()
 
                     permutation, cost = genetic.genetic(graph, graph_size ** 2, 0.1, "tour",
@@ -342,9 +363,10 @@ def test_path():
                     collection.append(
                         Data(type_of_graph, 'tour' + " cycle", algorithm_time, cost, str(permutation), graph_size,
                              itera))
+                    print("cycled, tournament ended")
 
     try:
-        file = open("Data Test", "w")
+        file = open("Data Test2", "w")
         json.dump(collection, file, indent=3)
     except IOError:
         pass
