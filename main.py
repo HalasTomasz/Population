@@ -4,7 +4,7 @@ import time
 import genetic
 import tsplib95
 import testownik
-
+import plotting_mutation_test
 
 def read_graph_input(file):
     with open(file) as f:
@@ -34,5 +34,6 @@ if __name__ == '__main__':
     # print(solution)
     # print(solution_distance)
     
-    testownik.test_nr_mutex()
+    # testownik.test_nr_mutex()
     # testownik.test_city("Data_Meta")
+    plotting_mutation_test.plotting("Mutation Test Trial")
