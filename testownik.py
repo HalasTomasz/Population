@@ -343,7 +343,7 @@ def test_path():
                     
                     start = time.process_time()
 
-                    permutation, cost = genetic.genetic(graph, graph_size ** 2, 0.1, "random",
+                    permutation, cost,itera = genetic.genetic(graph, graph_size ** 2, 0.1, "random",
                                                         "cycle_crossover", start, algorithm_time)
 
                     end = time.process_time()
@@ -356,7 +356,7 @@ def test_path():
                     
                     start = time.process_time()
 
-                    permutation, cost = genetic.genetic(graph, graph_size ** 2, 0.1, "tour",
+                    permutation, cost, itera  = genetic.genetic(graph, graph_size ** 2, 0.1, "tour",
                                                         "cycle_crossover", start, algorithm_time)
 
                     end = time.process_time()
@@ -379,8 +379,8 @@ def test_city(path):
     print(path)
     collection = []
     file_number = 0
-    mutation_table = [0.05, 0.1, 0.15, 0.2, 0.3, 0.5]
-    algorithm_time = 120
+    mutation_table = [0.05, 0.1, 0.2, 0.3, 0.5]
+    algorithm_time = 200
     for filename in os.listdir(path):
         file_number += 1
         if file_number > 10:
@@ -406,9 +406,13 @@ def test_city(path):
                 print("Rozwiązanie optymalne: ", opt)
             else:
                 opt = "None"
-
-            for pop_size in range(graph.number_of_nodes(), 2 * pow(graph.number_of_nodes(), 2), 300):
+                
+            pop_sizer = [graph.number_of_nodes(), 2 * graph.number_of_nodes(), pow(graph.number_of_nodes() ,2)]
+            
+            for pop_size in pop_sizer:
+                print("pop_size: ", pop_size)
                 for mutation in mutation_table:
+                    print("mutation: ", mutation)
                     start = time.process_time()
 
                     permutation, cost, itera = genetic.genetic(graph, pop_size, mutation, "roul",
