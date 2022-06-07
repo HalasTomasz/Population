@@ -154,12 +154,12 @@ def roul_parent():
 
         roulette_compartment += roulette_prob  # CZY TO ŻE TABLICA LUDZI JEST POSORTOWANA COS ZMIENIA?
 
-    print(roulette_compartment)
+    # print(roulette_compartment)
 
     for i in range(population_size // 2):
         first_parent = get_parent(random.random())
         second_parent = get_parent(random.random())
-        print(first_parent, second_parent)
+        # print(first_parent, second_parent)
         list_of_humans[first_parent].set_coparent(second_parent)
         list_of_humans[second_parent].set_coparent(first_parent)
         selected_parents.add(first_parent)
@@ -447,8 +447,8 @@ KONIEC SEKCJI Zabij itp
 
 
 # główna funkcja
-def genetic(graph, population_number, mutation_chance, number_of_iterations, selection_type, crossover_type,
-            start_time):
+def genetic(graph, population_number, mutation_chance, selection_type, crossover_type,
+            start_time, total_time):
     global list_of_humans, population_size, mutation_prob, total_adapt_points, best_solution_distance, best_solution
 
     total_adapt_points = 0
@@ -461,7 +461,7 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
     generate_start_population(graph)  # Now we get list of humans
 
     i = 0
-    while i in range(number_of_iterations):
+    while time.process_time() - start_time <= total_time:
 
         selection(base=selection_type)  # CHANGE THE BASE!
 
@@ -480,11 +480,14 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
         # list_of_humans.extend(generator)
         # kill()
 
+        if time.process_time() - start_time > total_time:
+            return best_solution, best_solution_distance, i
+
         final_check()
         population_size = len(list_of_humans)
+        i += 1
 
-        if time.process_time() - start_time > 3:
-            return best_solution, best_solution_distance, i
+    return best_solution, best_solution_distance, i
     # i = 0
     # for x in list_of_humans:
     # x.set_human_id(i)
@@ -493,5 +496,3 @@ def genetic(graph, population_number, mutation_chance, number_of_iterations, sel
     #  i = i + 1
 
     # best_solution, best_solution_distance = list_of_humans[-1].perm, list_of_humans[-1].dis
-
-    return best_solution, best_solution_distance, number_of_iterations

@@ -55,9 +55,11 @@ def DataMutex(Type, sel_cross, t, solution, permutation, n, ite, mutex):
 
 
 def test_nr_mutex():
-    types = ['sym', 'asym', 'eu']
+    # types = ['sym', 'asym', 'eu']
+    types = ['sym']
     collection = []
-    mutation_table = [0.05, 0.1, 0.15, 0.2, 0.3, 0.5]
+    # mutation_table = [0.05, 0.1, 0.15, 0.2, 0.3, 0.5]
+    mutation_table = [0.05, 0.1, 0.15]
     seed = 100
     size = 100
 
@@ -66,10 +68,13 @@ def test_nr_mutex():
     graph_eu = base_func.generate_graph(size, seed, 'eu')
 
     for i in range(2):  # 10
+        print("i", i)
         for type_of_graph in types:
-            for iteration in range(100, 201, 100):  # liczba iteracji
+            print("type_of_graph", type_of_graph)
+            for algorithm_time in range(30, 100, 30):  # liczba iteracji
+                print("algorithm_time", algorithm_time)
                 for mutation in mutation_table:
-
+                    print("mutation", mutation)
                     if type_of_graph == "sym":
 
                         graph = graph_sym
@@ -83,106 +88,124 @@ def test_nr_mutex():
 
                     start = time.process_time()
 
-                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, iteration, "roul",
-                                                               "order_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, "roul",
+                                                               "order_crossover", start, algorithm_time)
 
                     end = time.process_time()
 
                     collection.append(
-                        DataMutex(type_of_graph, 'roul' + " order", end - start, cost, str(permutation), size, itera,
+                        DataMutex(type_of_graph, 'roul' + " order", algorithm_time, cost, str(permutation), size, itera,
                                   mutation))
+
+                    print("order, roulette ended")
 
                     start = time.process_time()
 
-                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, iteration, "random",
-                                                               "order_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, "random",
+                                                               "order_crossover", start, algorithm_time)
 
                     end = time.process_time()
 
                     collection.append(
-                        DataMutex(type_of_graph, 'rand' + " order", end - start, cost, str(permutation), size, itera,
+                        DataMutex(type_of_graph, 'rand' + " order", algorithm_time, cost, str(permutation), size, itera,
                                   mutation))
+
+                    print("order, random ended")
 
                     start = time.process_time()
 
-                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, iteration, "tour",
-                                                               "order_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, "tour",
+                                                               "order_crossover", start, algorithm_time)
 
                     end = time.process_time()
 
                     collection.append(
-                        DataMutex(type_of_graph, 'rand' + " order", end - start, cost, str(permutation), size, itera,
+                        DataMutex(type_of_graph, 'tour' + " order", algorithm_time, cost, str(permutation), size, itera,
                                   mutation))
+
+                    print("order, tournament ended")
 
                     ##############################################################################################
 
                     start = time.process_time()
 
-                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, iteration, "roul",
-                                                               "mapped_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, "roul",
+                                                               "mapped_crossover", start, algorithm_time)
 
                     end = time.process_time()
 
                     collection.append(
-                        DataMutex(type_of_graph, 'roul' + " map", end - start, cost, str(permutation), size, itera,
+                        DataMutex(type_of_graph, 'roul' + " map", algorithm_time, cost, str(permutation), size, itera,
                                   mutation))
+
+                    print("mapped, roulette ended")
 
                     start = time.process_time()
 
-                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, iteration, "random",
-                                                               "mapped_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, "random",
+                                                               "mapped_crossover", start, algorithm_time)
 
                     end = time.process_time()
 
                     collection.append(
-                        DataMutex(type_of_graph, 'rand' + " map", end - start, cost, str(permutation), size, itera,
+                        DataMutex(type_of_graph, 'rand' + " map", algorithm_time, cost, str(permutation), size, itera,
                                   mutation))
+
+                    print("mapped, random ended")
 
                     start = time.process_time()
 
-                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, iteration, "tour",
-                                                               "mapped_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, "tour",
+                                                               "mapped_crossover", start, algorithm_time)
 
                     end = time.process_time()
 
                     collection.append(
-                        DataMutex(type_of_graph, 'tour' + " map", end - start, cost, str(permutation), size, itera,
+                        DataMutex(type_of_graph, 'tour' + " map", algorithm_time, cost, str(permutation), size, itera,
                                   mutation))
+
+                    print("mapped, tournament ended")
 
                     ###########################################################################################
 
                     start = time.process_time()
 
-                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, iteration, "roul",
-                                                               "cycle_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, "roul",
+                                                               "cycle_crossover", start, algorithm_time)
 
                     end = time.process_time()
 
                     collection.append(
-                        DataMutex(type_of_graph, 'roul' + " cycle", end - start, cost, str(permutation), size, itera,
+                        DataMutex(type_of_graph, 'roul' + " cycle", algorithm_time, cost, str(permutation), size, itera,
                                   mutation))
+
+                    print("cycled, roulette ended")
 
                     start = time.process_time()
 
-                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, iteration, "random",
-                                                               "cycle_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, "random",
+                                                               "cycle_crossover", start, algorithm_time)
 
                     end = time.process_time()
 
                     collection.append(
-                        DataMutex(type_of_graph, 'rand' + " cycle", end - start, cost, str(permutation), size, itera,
+                        DataMutex(type_of_graph, 'rand' + " cycle", algorithm_time, cost, str(permutation), size, itera,
                                   mutation))
+
+                    print("cycled, random ended")
 
                     start = time.process_time()
 
-                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, iteration, "tour",
-                                                               "cycle_crossover", start)
+                    permutation, cost, itera = genetic.genetic(graph, size ** 2, mutation, "tour",
+                                                               "cycle_crossover", start, algorithm_time)
 
                     end = time.process_time()
 
                     collection.append(
-                        DataMutex(type_of_graph, 'tour' + " cycle", end - start, cost, str(permutation), size, itera,
+                        DataMutex(type_of_graph, 'tour' + " cycle", algorithm_time, cost, str(permutation), size, itera,
                                   mutation))
+
+                    print("cycled, tournament ended")
 
     try:
         file = open("Mutation Test2", "w")

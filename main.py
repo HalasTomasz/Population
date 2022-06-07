@@ -34,5 +34,5 @@ if __name__ == '__main__':
     # print(solution)
     # print(solution_distance)
     
-    # testownik.test_nr_mutex()
-    testownik.test_city("Data_Meta")
+    testownik.test_nr_mutex()
+    # testownik.test_city("Data_Meta")
