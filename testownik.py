@@ -55,23 +55,24 @@ def DataMutex(Type, sel_cross, t, solution, permutation, n, ite, mutex):
 
 
 def test_nr_mutex():
-    # types = ['sym', 'asym', 'eu']
+    
     types = ['sym']
+   # types = ['sym']
     collection = []
-    # mutation_table = [0.05, 0.1, 0.15, 0.2, 0.3, 0.5]
-    mutation_table = [0.05, 0.1, 0.15]
+    mutation_table = [0.05, 0.1, 0.15, 0.2, 0.3, 0.5]
+    #mutation_table = [0.05, 0.1, 0.15]
     seed = 100
-    size = 100
+    size = 200
 
     graph_sym = base_func.generate_graph(size, seed, 'sym')
     graph_asym = base_func.generate_graph(size, seed, 'asym')
     graph_eu = base_func.generate_graph(size, seed, 'eu')
 
-    for i in range(2):  # 10
+    for i in range(3):  # 10
         print("i", i)
         for type_of_graph in types:
             print("type_of_graph", type_of_graph)
-            for algorithm_time in range(30, 100, 30):  # liczba iteracji
+            for algorithm_time in range(200, 201, 30):  # liczba iteracji
                 print("algorithm_time", algorithm_time)
                 for mutation in mutation_table:
                     print("mutation", mutation)
@@ -240,7 +241,7 @@ def test_path():
     for i in range(3):  # 10
         for type_of_graph in types:
             print("type: ", type_of_graph)
-            for algorithm_time in range(50, 151, 50):  # liczba iteracji
+            for algorithm_time in range(100, 201, 50):  # liczba iteracji
                 print("algorithm_time: ", algorithm_time)
                 for graph_size in range(100, 201, 50):
                     
@@ -366,7 +367,7 @@ def test_path():
                     print("cycled, tournament ended")
 
     try:
-        file = open("Data Test2", "w")
+        file = open("Data Test1", "w")
         json.dump(collection, file, indent=3)
     except IOError:
         pass
