@@ -35,7 +35,7 @@ THNIK ABOUT
 """
 
 # "random" , "roul" , "tour"
-# "order_crossover", "mapped_crossover"
+# "order_crossover", "mapped_crossover", "cycle_crossover"
 
 
 def DataMutex(Type, sel_cross, t, solution, permutation, n, ite, mutex):
