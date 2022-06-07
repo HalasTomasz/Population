@@ -40,3 +40,7 @@ if __name__ == '__main__':
     # testownik.test_path()
     # plotting.plotting_mutation_test("Mutation Test Trial")
     plotting.plotting_data_test("Data Test2")
+    #testownik.test_path()
+    testownik.test_city("A")
+
+    #plotting_mutation_test.plotting("Mutation Test Trial")
