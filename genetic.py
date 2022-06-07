@@ -451,6 +451,7 @@ def genetic(graph, population_number, mutation_chance, selection_type, crossover
             start_time, total_time):
     global list_of_humans, population_size, mutation_prob, total_adapt_points, best_solution_distance, best_solution
 
+    list_of_humans = []
     total_adapt_points = 0
     best_solution = []
     best_solution_distance = np.inf
