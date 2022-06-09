@@ -39,8 +39,8 @@ if __name__ == '__main__':
     # testownik.test_city("Data_Meta")
     # testownik.test_path()
     # plotting.plotting_mutation_test("Mutation Test Trial")
-    plotting.plotting_data_test("Data Test2")
+    plotting.plotting_cost2_test("DataMy2")
     #testownik.test_path()
-    testownik.test_city("A")
+    # testownik.test_city("A")
 
     #plotting_mutation_test.plotting("Mutation Test Trial")

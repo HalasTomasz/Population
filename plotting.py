@@ -267,3 +267,43 @@ def plotting_cost_test(filename):
         plt.title(f"Zależność łącznego kosztu permutacji od iteracji")
         plt.show()
         plt.clf()
+
+
+def plotting_cost2_test(filename):
+    data = json.load(open(filename, "r"))
+
+    sym_data = []
+    asym_data = []
+    full_data = []
+    eu_data = []
+
+    # types = [sym_data, asym_data, full_data, eu_data]
+    types = [sym_data]
+
+    for element in data:
+        if element["Type"] == "sym":
+            sym_data.append(element)
+        elif element["Type"] == "asym":
+            asym_data.append(element)
+        elif element["Type"] == "full":
+            full_data.append(element)
+        elif element["Type"] == "eu":
+            eu_data.append(element)
+
+    for data_type in types:
+        type_of_selections = [i["type_of"] for i in data_type if i["iteration"] > 0]
+        solutions = [i["solution"] for i in data_type if i["iteration"] > 0]
+        total_costs = [i["total_cost"] for i in data_type if i["iteration"] > 0]
+        iterations = [i["iteration"] for i in data_type if i["iteration"] > 0]
+        populations = [i["people"] for i in data_type if i["iteration"] > 0]
+        df = pd.DataFrame({'type_of_selections': type_of_selections, 'solutions': solutions, 'total_costs': total_costs,
+                           'iterations': iterations, 'populations': populations})
+
+        # colors = ['r', 'g', 'b']
+        # sns.set_palette("PuBuGn_d")
+        for i in range(3):
+            sns.lineplot(x=range(1, iterations[i] + 2), y=total_costs[i], label=str(populations[i]))
+            plt.title(f"Zależność łącznego kosztu permutacji od iteracji")
+        plt.legend()
+        plt.show()
+        plt.clf()
