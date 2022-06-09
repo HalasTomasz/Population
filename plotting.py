@@ -302,7 +302,9 @@ def plotting_cost2_test(filename):
         # colors = ['r', 'g', 'b']
         # sns.set_palette("PuBuGn_d")
         for i in range(3):
-            sns.lineplot(x=range(1, iterations[i] + 2), y=total_costs[i], label=str(populations[i]))
+
+            sns.lineplot(x=range(1, iterations[i] + 2), y=[x / populations[i] for x in total_costs[i]],
+                         label=str(populations[i]))
             plt.title(f"Zależność łącznego kosztu permutacji od iteracji")
         plt.legend()
         plt.show()
