@@ -1,0 +1,974 @@
+[
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 5,
+      "solution": 39064,
+      "permutation": "[95, 45, 81, 27, 67, 59, 93, 94, 65, 46, 79, 3, 13, 87, 82, 8, 34, 83, 4, 100, 91, 20, 69, 75, 98, 33, 55, 44, 53, 60, 21, 89, 47, 86, 70, 28, 42, 97, 19, 31, 66, 15, 6, 77, 11, 32, 35, 64, 62, 2, 12, 30, 17, 52, 54, 10, 72, 38, 49, 23, 56, 29, 74, 63, 51, 48, 57, 18, 73, 50, 78, 22, 39, 7, 90, 99, 26, 40, 96, 80, 24, 5, 84, 76, 14, 68, 9, 41, 25, 16, 88, 36, 71, 92, 61, 1, 85, 43, 37, 58]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 5,
+      "solution": 38230,
+      "permutation": "[98, 66, 39, 47, 48, 76, 10, 58, 5, 75, 51, 85, 17, 90, 38, 25, 36, 45, 16, 43, 81, 88, 89, 67, 9, 86, 13, 21, 87, 96, 22, 71, 42, 6, 62, 44, 12, 56, 72, 50, 28, 49, 83, 32, 95, 92, 60, 59, 74, 19, 77, 29, 23, 52, 27, 73, 93, 18, 57, 3, 82, 54, 70, 53, 30, 7, 99, 61, 69, 2, 37, 1, 65, 26, 4, 55, 78, 33, 79, 40, 15, 14, 8, 94, 64, 63, 24, 34, 20, 84, 100, 31, 46, 68, 91, 97, 41, 80, 35, 11]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 5,
+      "solution": 39283,
+      "permutation": "[68, 76, 23, 6, 62, 25, 100, 81, 56, 97, 96, 29, 74, 57, 11, 5, 47, 61, 71, 20, 89, 84, 12, 28, 67, 50, 26, 49, 42, 70, 98, 1, 22, 35, 4, 53, 73, 99, 65, 86, 52, 40, 77, 37, 80, 27, 83, 78, 75, 30, 60, 43, 36, 72, 33, 34, 63, 17, 93, 7, 21, 24, 46, 41, 95, 15, 90, 85, 14, 82, 79, 92, 44, 87, 2, 19, 13, 16, 88, 91, 3, 55, 51, 39, 69, 31, 32, 38, 64, 9, 48, 18, 94, 8, 66, 45, 59, 58, 54, 10]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 5,
+      "solution": 38758,
+      "permutation": "[79, 59, 37, 55, 83, 36, 2, 8, 69, 43, 9, 54, 56, 86, 60, 92, 39, 88, 35, 38, 42, 94, 23, 77, 48, 90, 61, 10, 14, 31, 52, 24, 57, 49, 85, 26, 74, 19, 3, 15, 67, 29, 64, 33, 96, 93, 70, 40, 98, 17, 91, 66, 11, 18, 95, 13, 4, 45, 28, 73, 76, 72, 12, 53, 82, 100, 97, 32, 47, 46, 58, 71, 7, 16, 25, 6, 87, 44, 34, 68, 89, 65, 63, 21, 20, 51, 5, 78, 41, 81, 27, 30, 1, 62, 75, 22, 99, 80, 84, 50]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 5,
+      "solution": 40350,
+      "permutation": "[57, 61, 40, 33, 32, 52, 17, 75, 26, 13, 50, 6, 88, 51, 38, 58, 22, 60, 36, 87, 10, 95, 98, 37, 55, 54, 79, 73, 34, 20, 71, 4, 48, 100, 49, 97, 23, 91, 39, 77, 53, 62, 65, 21, 89, 78, 30, 99, 41, 72, 28, 56, 27, 69, 12, 92, 11, 90, 59, 84, 14, 76, 67, 42, 15, 5, 29, 16, 8, 1, 7, 25, 43, 80, 83, 35, 47, 3, 94, 19, 82, 81, 85, 18, 2, 86, 31, 74, 9, 66, 64, 44, 68, 96, 93, 45, 70, 46, 63, 24]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 5,
+      "solution": 38591,
+      "permutation": "[81, 88, 44, 16, 14, 23, 43, 4, 76, 98, 24, 31, 80, 63, 69, 97, 95, 83, 82, 8, 29, 33, 30, 41, 18, 26, 56, 36, 39, 86, 50, 11, 28, 25, 66, 89, 65, 70, 12, 19, 2, 49, 61, 79, 94, 5, 75, 46, 6, 87, 62, 20, 10, 3, 71, 64, 9, 13, 37, 59, 91, 34, 53, 45, 22, 1, 27, 72, 74, 7, 42, 77, 92, 67, 51, 90, 96, 60, 48, 100, 52, 57, 17, 35, 58, 93, 73, 84, 15, 54, 99, 47, 68, 55, 85, 40, 32, 38, 21, 78]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 10,
+      "solution": 37868,
+      "permutation": "[26, 19, 49, 79, 98, 33, 30, 88, 13, 47, 15, 35, 94, 46, 12, 52, 56, 60, 28, 48, 29, 85, 43, 74, 83, 76, 18, 82, 50, 92, 31, 51, 37, 68, 40, 69, 91, 97, 96, 57, 80, 84, 20, 27, 72, 34, 6, 55, 32, 24, 45, 36, 73, 66, 44, 9, 63, 5, 25, 41, 70, 65, 23, 42, 93, 64, 89, 11, 53, 17, 14, 39, 87, 22, 100, 75, 71, 7, 3, 59, 8, 10, 77, 67, 38, 90, 99, 58, 86, 1, 2, 16, 54, 62, 78, 81, 4, 21, 95, 61]",
+      "size_of_graph": 100,
+      "iteration": 3
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 10,
+      "solution": 36544,
+      "permutation": "[74, 2, 23, 77, 17, 69, 30, 52, 73, 97, 55, 53, 72, 81, 25, 45, 100, 4, 64, 22, 35, 66, 89, 86, 99, 68, 28, 41, 56, 33, 78, 54, 90, 13, 32, 57, 24, 5, 14, 70, 39, 15, 19, 7, 96, 85, 47, 48, 34, 58, 50, 84, 27, 62, 42, 67, 46, 12, 88, 51, 61, 87, 98, 92, 83, 38, 65, 91, 40, 82, 93, 1, 11, 16, 59, 9, 49, 31, 43, 79, 95, 3, 80, 18, 37, 94, 6, 8, 71, 44, 75, 29, 10, 60, 21, 63, 36, 26, 76, 20]",
+      "size_of_graph": 100,
+      "iteration": 3
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 10,
+      "solution": 39675,
+      "permutation": "[64, 99, 43, 44, 47, 4, 81, 40, 97, 17, 88, 15, 58, 57, 46, 63, 12, 19, 51, 27, 95, 48, 2, 60, 6, 87, 52, 22, 38, 18, 41, 91, 73, 84, 94, 50, 39, 55, 9, 42, 90, 78, 65, 59, 32, 76, 36, 96, 30, 35, 62, 37, 77, 93, 13, 1, 20, 31, 11, 28, 23, 26, 72, 66, 68, 67, 71, 24, 85, 14, 70, 79, 83, 61, 92, 25, 21, 34, 69, 86, 82, 29, 10, 3, 7, 45, 56, 89, 98, 49, 80, 5, 53, 33, 16, 54, 100, 8, 74, 75]",
+      "size_of_graph": 100,
+      "iteration": 4
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 10,
+      "solution": 35194,
+      "permutation": "[77, 11, 43, 98, 48, 17, 81, 63, 13, 41, 69, 67, 10, 37, 33, 44, 55, 57, 89, 15, 9, 45, 82, 42, 74, 30, 100, 92, 60, 68, 36, 40, 72, 86, 22, 29, 35, 46, 71, 47, 14, 87, 34, 23, 85, 32, 6, 31, 65, 59, 16, 54, 96, 8, 49, 58, 97, 18, 56, 75, 66, 90, 38, 26, 1, 73, 19, 93, 50, 70, 88, 76, 53, 95, 24, 20, 94, 4, 99, 3, 62, 25, 52, 64, 84, 78, 27, 91, 61, 12, 21, 7, 39, 51, 83, 79, 2, 28, 5, 80]",
+      "size_of_graph": 100,
+      "iteration": 4
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 10,
+      "solution": 38655,
+      "permutation": "[74, 88, 87, 70, 61, 23, 43, 4, 76, 72, 68, 31, 80, 63, 20, 97, 5, 83, 16, 8, 29, 33, 86, 41, 18, 26, 56, 27, 39, 30, 50, 11, 28, 25, 66, 89, 65, 69, 12, 19, 2, 49, 95, 79, 94, 37, 75, 46, 6, 81, 62, 14, 10, 3, 71, 64, 9, 13, 24, 59, 91, 34, 53, 45, 22, 1, 44, 57, 96, 7, 42, 77, 92, 67, 51, 90, 47, 15, 48, 100, 52, 98, 17, 35, 58, 93, 73, 84, 38, 54, 99, 82, 60, 55, 85, 40, 32, 36, 21, 78]",
+      "size_of_graph": 100,
+      "iteration": 2
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 10,
+      "solution": 37514,
+      "permutation": "[12, 34, 48, 85, 53, 2, 88, 77, 65, 11, 28, 74, 15, 94, 16, 13, 40, 76, 36, 38, 87, 25, 49, 57, 44, 24, 62, 99, 56, 23, 50, 66, 29, 82, 83, 22, 72, 45, 1, 37, 41, 52, 70, 21, 59, 68, 7, 67, 55, 98, 60, 75, 18, 8, 80, 86, 5, 6, 100, 90, 17, 97, 81, 69, 58, 43, 20, 63, 46, 10, 42, 95, 92, 91, 84, 79, 30, 39, 89, 71, 33, 93, 64, 19, 96, 54, 78, 9, 47, 32, 27, 31, 73, 26, 4, 51, 61, 35, 14, 3]",
+      "size_of_graph": 100,
+      "iteration": 2
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 5,
+      "solution": 39064,
+      "permutation": "[95, 45, 81, 27, 67, 59, 93, 94, 65, 46, 79, 3, 13, 87, 82, 8, 34, 83, 4, 100, 91, 20, 69, 75, 98, 33, 55, 44, 53, 60, 21, 89, 47, 86, 70, 28, 42, 97, 19, 31, 66, 15, 6, 77, 11, 32, 35, 64, 62, 2, 12, 30, 17, 52, 54, 10, 72, 38, 49, 23, 56, 29, 74, 63, 51, 48, 57, 18, 73, 50, 78, 22, 39, 7, 90, 99, 26, 40, 96, 80, 24, 5, 84, 76, 14, 68, 9, 41, 25, 16, 88, 36, 71, 92, 61, 1, 85, 43, 37, 58]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 5,
+      "solution": 38230,
+      "permutation": "[98, 66, 39, 47, 48, 76, 10, 58, 5, 75, 51, 85, 17, 90, 38, 25, 36, 45, 16, 43, 81, 88, 89, 67, 9, 86, 13, 21, 87, 96, 22, 71, 42, 6, 62, 44, 12, 56, 72, 50, 28, 49, 83, 32, 95, 92, 60, 59, 74, 19, 77, 29, 23, 52, 27, 73, 93, 18, 57, 3, 82, 54, 70, 53, 30, 7, 99, 61, 69, 2, 37, 1, 65, 26, 4, 55, 78, 33, 79, 40, 15, 14, 8, 94, 64, 63, 24, 34, 20, 84, 100, 31, 46, 68, 91, 97, 41, 80, 35, 11]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 5,
+      "solution": 39283,
+      "permutation": "[68, 76, 23, 6, 62, 25, 100, 81, 56, 97, 96, 29, 74, 57, 11, 5, 47, 61, 71, 20, 89, 84, 12, 28, 67, 50, 26, 49, 42, 70, 98, 1, 22, 35, 4, 53, 73, 99, 65, 86, 52, 40, 77, 37, 80, 27, 83, 78, 75, 30, 60, 43, 36, 72, 33, 34, 63, 17, 93, 7, 21, 24, 46, 41, 95, 15, 90, 85, 14, 82, 79, 92, 44, 87, 2, 19, 13, 16, 88, 91, 3, 55, 51, 39, 69, 31, 32, 38, 64, 9, 48, 18, 94, 8, 66, 45, 59, 58, 54, 10]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 5,
+      "solution": 38758,
+      "permutation": "[79, 59, 37, 55, 83, 36, 2, 8, 69, 43, 9, 54, 56, 86, 60, 92, 39, 88, 35, 38, 42, 94, 23, 77, 48, 90, 61, 10, 14, 31, 52, 24, 57, 49, 85, 26, 74, 19, 3, 15, 67, 29, 64, 33, 96, 93, 70, 40, 98, 17, 91, 66, 11, 18, 95, 13, 4, 45, 28, 73, 76, 72, 12, 53, 82, 100, 97, 32, 47, 46, 58, 71, 7, 16, 25, 6, 87, 44, 34, 68, 89, 65, 63, 21, 20, 51, 5, 78, 41, 81, 27, 30, 1, 62, 75, 22, 99, 80, 84, 50]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 5,
+      "solution": 40350,
+      "permutation": "[57, 61, 40, 33, 32, 52, 17, 75, 26, 13, 50, 6, 88, 51, 38, 58, 22, 60, 36, 87, 10, 95, 98, 37, 55, 54, 79, 73, 34, 20, 71, 4, 48, 100, 49, 97, 23, 91, 39, 77, 53, 62, 65, 21, 89, 78, 30, 99, 41, 72, 28, 56, 27, 69, 12, 92, 11, 90, 59, 84, 14, 76, 67, 42, 15, 5, 29, 16, 8, 1, 7, 25, 43, 80, 83, 35, 47, 3, 94, 19, 82, 81, 85, 18, 2, 86, 31, 74, 9, 66, 64, 44, 68, 96, 93, 45, 70, 46, 63, 24]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 5,
+      "solution": 38591,
+      "permutation": "[81, 88, 44, 16, 14, 23, 43, 4, 76, 98, 24, 31, 80, 63, 69, 97, 95, 83, 82, 8, 29, 33, 30, 41, 18, 26, 56, 36, 39, 86, 50, 11, 28, 25, 66, 89, 65, 70, 12, 19, 2, 49, 61, 79, 94, 5, 75, 46, 6, 87, 62, 20, 10, 3, 71, 64, 9, 13, 37, 59, 91, 34, 53, 45, 22, 1, 27, 72, 74, 7, 42, 77, 92, 67, 51, 90, 96, 60, 48, 100, 52, 57, 17, 35, 58, 93, 73, 84, 15, 54, 99, 47, 68, 55, 85, 40, 32, 38, 21, 78]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 5,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 10,
+      "solution": 39064,
+      "permutation": "[95, 45, 81, 27, 67, 59, 93, 94, 65, 46, 79, 3, 13, 87, 82, 8, 34, 83, 4, 100, 91, 20, 69, 75, 98, 33, 55, 44, 53, 60, 21, 89, 47, 86, 70, 28, 42, 97, 19, 31, 66, 15, 6, 77, 11, 32, 35, 64, 62, 2, 12, 30, 17, 52, 54, 10, 72, 38, 49, 23, 56, 29, 74, 63, 51, 48, 57, 18, 73, 50, 78, 22, 39, 7, 90, 99, 26, 40, 96, 80, 24, 5, 84, 76, 14, 68, 9, 41, 25, 16, 88, 36, 71, 92, 61, 1, 85, 43, 37, 58]",
+      "size_of_graph": 100,
+      "iteration": 2
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 10,
+      "solution": 37308,
+      "permutation": "[93, 28, 37, 74, 2, 52, 36, 56, 38, 49, 88, 79, 87, 40, 80, 89, 3, 99, 51, 92, 78, 75, 54, 55, 47, 9, 15, 98, 4, 26, 44, 71, 94, 19, 29, 45, 16, 76, 14, 95, 72, 50, 13, 18, 68, 10, 97, 66, 59, 7, 20, 39, 25, 48, 61, 90, 17, 83, 6, 96, 8, 12, 30, 100, 27, 58, 1, 42, 73, 86, 67, 46, 35, 23, 91, 5, 21, 33, 11, 69, 60, 81, 85, 65, 77, 62, 22, 32, 63, 31, 41, 34, 70, 43, 53, 64, 84, 57, 24, 82]",
+      "size_of_graph": 100,
+      "iteration": 2
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 10,
+      "solution": 38925,
+      "permutation": "[89, 36, 72, 5, 78, 4, 100, 85, 29, 8, 48, 92, 41, 90, 40, 37, 81, 60, 47, 63, 73, 45, 1, 44, 13, 94, 95, 23, 46, 49, 62, 51, 7, 80, 27, 50, 64, 22, 68, 31, 28, 6, 96, 82, 43, 79, 38, 98, 87, 53, 55, 19, 2, 33, 9, 15, 67, 99, 93, 76, 54, 77, 61, 65, 69, 71, 16, 24, 91, 25, 70, 59, 97, 88, 58, 12, 34, 84, 42, 11, 57, 3, 30, 83, 52, 18, 75, 10, 56, 35, 14, 86, 20, 32, 66, 21, 17, 74, 26, 39]",
+      "size_of_graph": 100,
+      "iteration": 3
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 10,
+      "solution": 34949,
+      "permutation": "[20, 96, 47, 76, 39, 32, 19, 16, 54, 60, 40, 74, 12, 27, 100, 38, 85, 79, 35, 24, 41, 5, 28, 53, 84, 29, 8, 49, 57, 95, 75, 17, 68, 36, 14, 83, 73, 18, 87, 4, 26, 2, 91, 31, 11, 44, 71, 90, 81, 72, 30, 89, 46, 23, 78, 22, 77, 69, 61, 1, 88, 58, 15, 7, 50, 97, 45, 80, 51, 37, 42, 33, 67, 92, 65, 86, 25, 34, 98, 52, 94, 9, 3, 10, 82, 93, 59, 6, 64, 62, 56, 55, 13, 43, 70, 48, 63, 66, 21, 99]",
+      "size_of_graph": 100,
+      "iteration": 3
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 100,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 10,
+      "solution": 40339,
+      "permutation": "[64, 74, 46, 73, 31, 79, 38, 58, 11, 86, 37, 36, 21, 80, 8, 5, 68, 48, 78, 98, 13, 3, 59, 12, 100, 82, 84, 60, 42, 91, 77, 18, 25, 19, 97, 16, 27, 95, 94, 7, 30, 49, 89, 43, 33, 34, 20, 96, 70, 17, 24, 57, 93, 29, 88, 47, 75, 67, 44, 9, 50, 90, 92, 83, 51, 54, 4, 14, 2, 52, 61, 56, 28, 85, 69, 53, 32, 76, 35, 87, 65, 55, 99, 10, 23, 22, 6, 39, 40, 81, 15, 71, 63, 66, 62, 26, 1, 72, 45, 41]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 10,
+      "solution": 37459,
+      "permutation": "[12, 34, 48, 85, 53, 2, 88, 77, 65, 83, 28, 74, 15, 94, 16, 13, 40, 76, 36, 38, 87, 25, 49, 57, 44, 24, 62, 99, 56, 23, 50, 66, 29, 82, 11, 22, 72, 45, 1, 37, 41, 52, 70, 21, 59, 68, 7, 67, 55, 98, 60, 75, 18, 8, 80, 86, 5, 6, 100, 90, 17, 97, 81, 69, 58, 43, 20, 63, 46, 10, 42, 95, 92, 91, 84, 79, 30, 39, 89, 71, 33, 93, 64, 19, 96, 54, 78, 9, 47, 32, 27, 31, 73, 26, 4, 51, 61, 35, 14, 3]",
+      "size_of_graph": 100,
+      "iteration": 1
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 150,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour order",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour map",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "roul cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "rand cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   },
+   {
+      "Type": "sym",
+      "type_of": "tour cycle",
+      "time": 10,
+      "solution": Infinity,
+      "permutation": "[]",
+      "size_of_graph": 200,
+      "iteration": 0
+   }
+]

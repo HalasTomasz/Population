@@ -1,6 +1,10 @@
+import re
+import time
+
 import genetic
 import tsplib95
-import re
+import testownik
+import plotting
 
 
 def read_graph_input(file):
@@ -11,17 +15,32 @@ def read_graph_input(file):
     new_graph = new_graph.to_directed()
 
     opt = tsplib95.load('bays29.opt.tour')
-    print(problem.trace_tours(opt.tours))
+    print("Optimal: ", problem.trace_tours(opt.tours))
     return new_graph
 
 
 if __name__ == '__main__':
-    filename = 'bays29.tsp'
-    graph = read_graph_input(filename)
-    population_size = int(re.findall(r'\d+', filename)[0])
-    number_of_iterations = population_size ** 2
-    mutation_prob = 0.05
+    # filename = 'bays29.tsp'
+    # graph = read_graph_input(filename)
+    # population_size = int(re.findall(r'\d+', filename)[0])
+    # number_of_iterations = 4000
+    # mutation_prob = 0.05
+    # selection_type = "roul"
+    # crossover_type = "mapped_crossover"
+    # start_time = time.process_time()
+    #
+    # solution, solution_distance, iterations = genetic.genetic(graph, population_size, mutation_prob,
+    #                                                           number_of_iterations, selection_type, crossover_type,
+    #                                                           start_time)
+    # print(solution)
+    # print(solution_distance)
+    
+    # testownik.test_nr_mutex()
+    # testownik.test_city("Data_Meta")
+    # testownik.test_path()
+    # plotting.plotting_mutation_test("Mutation Test Trial")
+    plotting.plotting_cost2_test("DataMy2")
+    #testownik.test_path()
+    # testownik.test_city("A")
 
-    solution, solution_distance = genetic.genetic(graph, population_size, mutation_prob, number_of_iterations)
-    print(solution)
-    print(solution_distance)
+    #plotting_mutation_test.plotting("Mutation Test Trial")
